@@ -15,11 +15,10 @@
       The code below dynamically generates a sidebar nav of pages with
       `layout: page` in the front-matter. See readme for usage.
     {% endcomment %}
-    hello
     {% assign pages_list = site.pages | sort:"url" %}
     {% for node in pages_list %}
-      {{ node.title }}
       {% if node.title != null %}
+        {{ node.title }}
         {% if node.layout == "page" %}
           <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
         {% endif %}
