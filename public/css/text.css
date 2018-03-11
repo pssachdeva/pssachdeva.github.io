@@ -1,3 +1,7 @@
 #lowercase {
 	text-transform: lowercase;
 }
+
+#masthead {
+	text-align: justify;
+}
