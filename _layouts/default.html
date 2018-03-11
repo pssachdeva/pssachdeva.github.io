@@ -13,16 +13,12 @@
       <div class="masthead">
         <div class="container">
           <h3 class="masthead-title">
-            <div text-align="justify">
-            <a href="{{ site.baseurl }}/" title="Home">home</a>
-            {% for node in pages_list %}
-              {% if node.title != null %}
-                {% if node.layout == "page" %}
-                  <a id='lowercase' href="{{ node.url }}">{{ node.url }}</a>
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-            </div>
+            <ul id="masthead">
+              <li><a href="{{ site.baseurl }}/" title="Home">home</a></li>
+              <li><a href="/research.html">research</a></li>
+              <li><a href="/teaching.html">teaching</a></li>
+              <li>projects</li>
+              <li>posts</li>
           </h3>
         </div>
       </div>
