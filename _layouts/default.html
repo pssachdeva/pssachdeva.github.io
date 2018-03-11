@@ -14,6 +14,13 @@
         <div class="container">
           <h3 class="masthead-title">
             <a href="{{ site.baseurl }}/" title="Home">home</a>
+            {% for node in pages_list %}
+              {% if node.title != null %}
+                {% if node.layout == "page" %}
+                  <a href="{{ node.url }}">{{ node.title }}</a>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
           </h3>
         </div>
       </div>
