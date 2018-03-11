@@ -18,6 +18,5 @@
 }
 
 .researchpic {
-	text-align: center; 
-	display: inline-block;
+	justify-content: center; 
 }
