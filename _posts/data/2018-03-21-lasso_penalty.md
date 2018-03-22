@@ -7,7 +7,7 @@ The lasso is a regression method in which we apply an $\ell_1$ penalty to the re
 
 To be clear, let's suppose we have the $T \times N$ design matrix $\mathbf{X}$ consisting of $T$ observations of $N$ features. We also have the . The lasso objective is 
 
-$$\hat{\boldsymbol{\beta}} = \underset{\text{argmin}}{{\boldsymbol{\beta}}} \left\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \lambda |\boldsymbol{\beta}|_1\right\}$$
+$$\hat{\boldsymbol{\beta}} = \underset{{\boldsymbol{\beta}}}{\operatorname{argmin}} \left\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \lambda |\boldsymbol{\beta}|_1\right\}$$
 
 where $\lambda$ is a hyperparameter that we usually choose during cross-validation. It tells us how strongly we should enforce sparsity when choosing $\boldsymbol{\beta}$. 
 
