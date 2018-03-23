@@ -23,13 +23,13 @@ Right now, we've written the problem such that the same penalty term is applied 
 <h2 align="center">Lasso</h2>
 
 \begin{align}
-	\boldsymbol{\hat{\beta}}_1, \boldsymbol{\hat{\beta}}_2 &= \underset{\boldsymbol{\beta}_1, \boldsymbol{beta}_2}{\operatorname{argmin}} ||\mathbf{y} - \mathbf{X}_2 \boldsymbol{\beta}_1 - \mathbf{X}_1 \boldsymbol{\beta}_2||^2 + \lambda ||\boldsymbol{\beta}_1||_1.
+	\boldsymbol{\hat{\beta}}_1, \boldsymbol{\hat{\beta}}_2 &= \underset{\boldsymbol{\beta}_1, \boldsymbol{\beta}_2}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}_2 \boldsymbol{\beta}_1 - \mathbf{X}_1 \boldsymbol{\beta}_2|^2_2 + \lambda |\boldsymbol{\beta}_1|_1\right\\}.
 \end{align}
 
 We can reformulate this problem into an ordinary Lasso regression. To see this, let us first expand the reconstruction term in the objective function:
 \begin{align}
-	||\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2 \boldsymbol{\beta}_2||^2 &= \left(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2\boldsymbol{\beta}_2\right)^T\left(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2\boldsymbol{\beta}_2\right) \\
-	&= \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right) - (\mathbf{y}_1 - \mathbf{X}_1\boldsymbol{\beta})^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\
+	||\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2 \boldsymbol{\beta}_2||^2 &= \left(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2\boldsymbol{\beta}_2\right)^T\left(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2\boldsymbol{\beta}_2\right) \\\\
+	&= \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right) - (\mathbf{y}_1 - \mathbf{X}_1\boldsymbol{\beta})^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\
 	& \qquad  -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)+ \boldsymbol{\beta}_2^T \mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2.
 \end{align}
 Now suppose we have a projector into the column space of $\mathbf{X}_2$, namely 
