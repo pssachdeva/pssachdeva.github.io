@@ -7,6 +7,9 @@ The lasso is a regression method in which we apply an $\ell_1$ penalty to the re
 
 <h2 text-align="center">Setup</h2>
 To be clear, let's suppose we have the $T \times N$ design matrix $\mathbf{X}$ consisting of $T$ observations of $N$ features. We also have the . The lasso objective is 
+\begin{align}
+x^2&=5
+\end{align}
 
 \begin{align}
 \hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \lambda |\boldsymbol{\beta}|_1\right\}
