@@ -5,6 +5,7 @@ title: Useful Transformations for the Application of a Lasso Penalty
 
 The lasso is a regression method in which we apply an $\ell_1$ penalty to the regression coefficients. It's useful because it performs feature selection: the lasso will only estimate the parameters for the regressors it likes, while the rest get set to zero. However, we might not always want to apply a lasso penalty uniformly - or even at all - to some coefficients. In this post, I'll detail how to rewrite those cases into a vanilla lasso problem. 
 
+<h2 text-align="center">Setup</h2>
 To be clear, let's suppose we have the $T \times N$ design matrix $\mathbf{X}$ consisting of $T$ observations of $N$ features. We also have the . The lasso objective is 
 
 $$\hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \lambda |\boldsymbol{\beta}|_1\right\}$$
@@ -15,3 +16,7 @@ Right now, we've written the problem such that the same penalty term is applied 
 
 $$\hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum_{i=1}^N \lambda_i |\beta_i|\right\}$$
 
+<h2 text-align="center">Lasso</h2>
+\begin{align}
+x^2 = 5
+\end{align}
