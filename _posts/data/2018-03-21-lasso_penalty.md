@@ -30,7 +30,8 @@ We can reformulate this problem into an ordinary Lasso regression. To see this, 
 \begin{align}
 	|\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2 \boldsymbol{\beta}_2|^2_2 &= \left(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2\boldsymbol{\beta}_2\right)^T\left(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2\boldsymbol{\beta}_2\right) \\\\\\
 	&= \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)  \notag \\\\\\
-	& \qquad - (\mathbf{y}_1 - \mathbf{X}_1\boldsymbol{\beta})^T \mathbf{X}_2 \boldsymbol{\beta}_2 -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)+ \boldsymbol{\beta}_2^T \notag \\\\\\\mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2.
+	& \qquad - (\mathbf{y}_1 - \mathbf{X}_1\boldsymbol{\beta})^T \mathbf{X}_2 \boldsymbol{\beta}_2 -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) \notag \\\\\\
+	& + \boldsymbol{\beta}_2^T\mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2.
 \end{align}
 Now suppose we have a projector into the column space of $\mathbf{X}_2$, namely 
 \begin{align}
