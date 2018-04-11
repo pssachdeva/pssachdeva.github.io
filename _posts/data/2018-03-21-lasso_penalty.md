@@ -6,7 +6,7 @@ title: Useful Variations on the Lasso Penalty
 The lasso is a regression method in which we apply an $\ell_1$ penalty to the regression coefficients. It's useful because it performs feature selection: the lasso will only estimate the parameters for the regressors it likes, while the rest get set to zero. However, we might not always want to apply a lasso penalty uniformly - or even at all - to some coefficients. In this post, I'll detail how to rewrite those cases into a vanilla lasso problem. 
 
 <h2 align="center">Setup</h2>
-To be clear, let's suppose we have the $T \times N$ design matrix $\mathbf{X}$ consisting of $T$ observations of $N$ features. Furthermore, our dependent variable is denoted by the $T\times 1$ vector $\mathbf{y}$ while the parameters to be estimated are the $N\times 1$ vector $\boldsymbol{\beta}$. Denoting the $\ell_p$ norm as $|\cdot|_p$, the lasso objective can be written as
+To be clear, let's suppose we have the $T \times N$ design matrix $\mathbf{X}$ consisting of $T$ observations of $N$ features. Furthermore, our dependent variable is denoted by the $T\times 1$ vector $\mathbf{y}$ while the the $N\times 1$ vector $\boldsymbol{\beta}$ contains the parameters to be estimated. Denoting the $\ell_p$ norm as $|\cdot|_p$, the lasso objective can be written as
 
 \begin{align}
 \hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \lambda |\boldsymbol{\beta}|_1\right\\}
@@ -20,10 +20,10 @@ Right now, we've written the problem such that the same penalty term is applied 
 \hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\right\\}.
 \end{align}
 
-I'll describe the procedure for solving 
+The above equation can be rewritten as 
 
-<h2 align="center">2. Lasso</h2>
-
+<h2 align="center">Penalty on Subset of Parameters</h2>
+First, let's consider the case where the penalty is only applied to a subset of the $\beta_i$. This corresponds to $\lambda_i=0$ for some set of 
 \begin{align}
 	\boldsymbol{\hat{\beta}}_1, \boldsymbol{\hat{\beta}}_2 &= \underset{\boldsymbol{\beta}_1, \boldsymbol{\beta}_2}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}_2 \boldsymbol{\beta}_1 - \mathbf{X}_1 \boldsymbol{\beta}_2|^2_2 + \lambda |\boldsymbol{\beta}_1|_1\right\\}.
 \end{align}
@@ -38,4 +38,22 @@ We can reformulate this problem into an ordinary Lasso regression. To see this, 
 Now suppose we have a projector into the column space of $\mathbf{X}_2$, namely 
 \begin{align}
 	\mathbf{P}_2 &= \mathbf{X}_2 (\mathbf{X}_2^T \mathbf{X}_2)^{-1} \mathbf{X}_2^T.
+\end{align}
+
+The projection matrix $\mathbf{P}_2$ is symmetric and idempotent. The intuition is to remove the components of $\mathbf{X}_2$ from the residuals $\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1$ and perform Lasso on that. To accomplish this, we will add and subtract the term $(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)$ as follows:
+\begin{align}
+	||\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2 \boldsymbol{\beta}_2||^2 &= \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right) - (\mathbf{y}_1 - \mathbf{X}_1\boldsymbol{\beta})^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
+	& \qquad  -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)+ \boldsymbol{\beta}_2^T \mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
+	&\qquad +(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) \notag \\\\\\
+	&\qquad -(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) \\\\\\
+	&= \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\mathbf{P}_2\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right) - (\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta})^T \mathbf{P}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
+	&\qquad -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T \mathbf{P}_2(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)+ \boldsymbol{\beta}_2^T \mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
+	&\qquad +(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1),
+\end{align}
+where we have combined the first and last terms and inserted projection matrices next to $\mathbf{X}_2$ (since they have no effect on this matrix). Now, we apply the idempotency of the projection matrix to write
+\begin{align}
+	||\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2 \boldsymbol{\beta}_2||^2 &=  \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\mathbf{P}_2^T \mathbf{P}_2\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right) + (\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta})^T \mathbf{P}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
+	& \qquad -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T \mathbf{P}_2(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)+ \boldsymbol{\beta}_2^T \mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag\\\\\\
+	&\qquad +(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) \\\\\\
+	&= ||\mathbf{P}_2 (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) - \mathbf{X}_2\boldsymbol{\beta}_2||^2 + ||(\mathbf{I} - \mathbf{P}_2)(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)||^2.
 \end{align}
