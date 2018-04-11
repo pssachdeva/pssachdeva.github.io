@@ -17,43 +17,11 @@ where $\lambda$ is a hyperparameter that we usually choose during cross-validati
 Right now, we've written the problem such that the same penalty term is applied across all the coefficients. Sometimes, though, we'll have groups of regressors which we know have different levels of sparsity. To be general, let's suppose we want to apply a different regularization strength $\lambda_i$ to each coefficient $\beta_i$. The optimization procedure in this case is 
 
 \begin{align}
-\hat{\boldsymbol{\beta}} = \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\right\\}.
+\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\right\\}. \\
+&= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + |\Lambda \boldsymbol{\beta}|_1
 \end{align}
 
-The above equation can be rewritten as 
+where $\Lambda = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. The above equation can be rewritten as 
 
 <h2 align="center">Penalty on Subset of Parameters</h2>
-First, let's consider the case where the penalty is only applied to a subset of the $\beta_i$. This corresponds to $\lambda_i=0$ for some set of 
-\begin{align}
-	\boldsymbol{\hat{\beta}}_1, \boldsymbol{\hat{\beta}}_2 &= \underset{\boldsymbol{\beta}_1, \boldsymbol{\beta}_2}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}_2 \boldsymbol{\beta}_1 - \mathbf{X}_1 \boldsymbol{\beta}_2|^2_2 + \lambda |\boldsymbol{\beta}_1|_1\right\\}.
-\end{align}
-
-We can reformulate this problem into an ordinary Lasso regression. To see this, let us first expand the reconstruction term in the objective function:
-\begin{align}
-	|\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2 \boldsymbol{\beta}_2|^2_2 &= \left(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2\boldsymbol{\beta}_2\right)^T\left(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2\boldsymbol{\beta}_2\right) \\\\\\
-	&= \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)  \notag \\\\\\
-	& \qquad - (\mathbf{y}_1 - \mathbf{X}_1\boldsymbol{\beta})^T \mathbf{X}_2 \boldsymbol{\beta}_2 -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) \notag \\\\\\
-	& \qquad + \boldsymbol{\beta}_2^T\mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2.
-\end{align}
-Now suppose we have a projector into the column space of $\mathbf{X}_2$, namely 
-\begin{align}
-	\mathbf{P}_2 &= \mathbf{X}_2 (\mathbf{X}_2^T \mathbf{X}_2)^{-1} \mathbf{X}_2^T.
-\end{align}
-
-The projection matrix $\mathbf{P}_2$ is symmetric and idempotent. The intuition is to remove the components of $\mathbf{X}_2$ from the residuals $\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1$ and perform Lasso on that. To accomplish this, we will add and subtract the term $(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)$ as follows:
-\begin{align}
-	||\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2 \boldsymbol{\beta}_2||^2 &= \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right) - (\mathbf{y}_1 - \mathbf{X}_1\boldsymbol{\beta})^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
-	& \qquad  -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)+ \boldsymbol{\beta}_2^T \mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
-	&\qquad +(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) \notag \\\\\\
-	&\qquad -(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) \\\\\\
-	&= \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\mathbf{P}_2\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right) - (\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta})^T \mathbf{P}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
-	&\qquad -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T \mathbf{P}_2(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)+ \boldsymbol{\beta}_2^T \mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
-	&\qquad +(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1),
-\end{align}
-where we have combined the first and last terms and inserted projection matrices next to $\mathbf{X}_2$ (since they have no effect on this matrix). Now, we apply the idempotency of the projection matrix to write
-\begin{align}
-	||\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1 - \mathbf{X}_2 \boldsymbol{\beta}_2||^2 &=  \left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right)^T\mathbf{P}_2^T \mathbf{P}_2\left(\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta}_1\right) + (\mathbf{y}_1 - \mathbf{X}_1 \boldsymbol{\beta})^T \mathbf{P}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag \\\\\\
-	& \qquad -\boldsymbol{\beta}_2 ^T\mathbf{X}_2^T \mathbf{P}_2(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)+ \boldsymbol{\beta}_2^T \mathbf{X}_2^T \mathbf{X}_2 \boldsymbol{\beta}_2 \notag\\\\\\
-	&\qquad +(\mathbf{y}-\mathbf{X}_1 \boldsymbol{\beta}_1)^T(\mathbf{I} - \mathbf{P}_2)^T(\mathbf{I} - \mathbf{P}_2) (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) \\\\\\
-	&= ||\mathbf{P}_2 (\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1) - \mathbf{X}_2\boldsymbol{\beta}_2||^2 + ||(\mathbf{I} - \mathbf{P}_2)(\mathbf{y} - \mathbf{X}_1 \boldsymbol{\beta}_1)||^2.
-\end{align}
+For now, let's assume that $\lambda_i>0$ for all $i$. Then we can rewrite the 
