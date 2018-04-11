@@ -17,8 +17,8 @@ where $\lambda$ is a hyperparameter that we usually choose during cross-validati
 Right now, we've written the problem such that the same penalty term is applied across all the coefficients. Sometimes, though, we'll have groups of regressors which we know have different levels of sparsity. To be general, let's suppose we want to apply a different regularization strength $\lambda_i$ to each coefficient $\beta_i$. The optimization procedure in this case is 
 
 \begin{align}
-\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\right\\}. \\
-&= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + |\Lambda \boldsymbol{\beta}|_1
+\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\right\\} \\\\\\
+&= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + |\Lambda \boldsymbol{\beta}|_1\right\\}.
 \end{align}
 
 where $\Lambda = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. The above equation can be rewritten as 
