@@ -21,7 +21,19 @@ Right now, we've written the problem such that the same penalty term is applied 
 &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + |\Lambda \boldsymbol{\beta}|_1\right\\}.
 \end{align}
 
-where $\Lambda = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. The above equation can be rewritten as 
+where $\Lambda = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. 
+<h2 align="center">Rewriting to Vanilla Lasso: Non-zero $\lambda$</h2>
+For now, let's assume that $\lambda_i>0$ for all $i$. In the above optimization problem, define $\boldsymbol{\beta}' = \Lambda \boldsymbol{beta}$, so that
 
-<h2 align="center">Penalty on Subset of Parameters</h2>
-For now, let's assume that $\lambda_i>0$ for all $i$. Then we can rewrite the 
+\begin{align}
+\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + |\boldsymbol{\beta}'|_1\right\\}.
+\end{align}
+
+This is starting to look like a vanilla Lasso: the pesky $\Lambda$ has been absorbed into the parameters. A consequence of this is that the ``new'' $\lambda$ is simply equal to one. We're not done yet, as we need to rewrite $\boldsymbol{\beta}$ in the reconstruction term. To do so, we need a $\Lambda$; but we can concoct this as follows:
+
+\begin{align}
+\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\Lambda^{-1} \Lambda\boldsymbol{\beta}|^2_2 + |\boldsymbol{\beta}'|_1\right\\} \\\\\
+& \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \left\\{\frac{1}{N}|\mathbf{y} - \mathbf{X}\Lambda^{-1} \boldsymbol{\beta}'|^2_2 + |\boldsymbol{\beta}'|_1\right\\}
+\end{align}
+\end{align}
+
