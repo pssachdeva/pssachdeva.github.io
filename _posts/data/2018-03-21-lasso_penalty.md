@@ -57,7 +57,7 @@ Let's now consider the case when some of the $\lambda_i$ are equal to zero. This
 Thus, the optimization problem can be written as 
 
 \begin{align}
-\hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \  \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} + \mathbf{X}\_{\text{P} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\beta}'|_1\right\\} \\\\\
+\hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \  \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} + \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\beta}\_{\text{P}}|_1\right\\} \\\\\
 x^2 &= 5
 \end{align}
 
