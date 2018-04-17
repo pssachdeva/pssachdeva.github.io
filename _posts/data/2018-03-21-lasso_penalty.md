@@ -7,6 +7,7 @@ The lasso is a regression method in which we apply an $\ell_1$ penalty to the re
 <hr>
 <h2 align="center">Setup</h2>
 <hr>
+
 To be clear, let's suppose we have the $T \times N$ design matrix $\mathbf{X}$ consisting of $T$ observations of $N$ features. Furthermore, our dependent variable is denoted by the $T\times 1$ vector $\mathbf{y}$ while the the $N\times 1$ vector $\boldsymbol{\beta}$ contains the parameters to be estimated. Denoting the $\ell_p$ norm as $|\cdot|_p$, the lasso objective can be written as
 
 \begin{align}
@@ -23,7 +24,11 @@ Right now, we've written the problem such that the same penalty term is applied 
 \end{align}
 
 where $\boldsymbol{\Lambda} = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. 
-<h2 align="center">Rewriting to Vanilla Lasso: Non-zero $\lambda$</h2>
+
+<hr>
+<h2 align="center">Case 1: Non-zero Penalties</h2>
+<hr>
+
 For now, let's assume that $\lambda_i>0$ for all $i$. In the above optimization problem, define $\boldsymbol{\beta}' = \boldsymbol{\Lambda} \boldsymbol{\beta}$, so that
 
 \begin{align}
@@ -41,14 +46,17 @@ This is starting to look like a vanilla Lasso: the pesky $\boldsymbol{\Lambda}$ 
 where $\mathbf{X}' = \mathbf{X}\boldsymbol{\Lambda}^{-1}$. What we're left with is a vanilla Lasso problem! The procedure is simple: for some choice of $\boldsymbol{\Lambda}$, transform your design matrix $\mathbf{X} \rightarrow \mathbf{X}\boldsymbol{\Lambda}^{-1}$ and run an ordinary Lasso with regularization term set to one. 
 
 This approach fails, however, if any of the $\lambda_i$ are equal to zero because $\boldsymbol{\Lambda}$ becomes singular. In this case, we need to take a different approach.
+
 <hr>
 <h2 align="center">Case 2: Unpenalized Coefficients</h2> 
+<hr>
+
 Let's now consider the case when some of the $\lambda_i$ are equal to zero. This implies that a subset of the $\beta_i$ are unpenalized in the regression. To make this explicit, let's split the $\beta_i$ into two sets of coefficients: those that are penalized $\boldsymbol{\beta}\_{\text{P}}$, and those that aren't $\boldsymbol{\beta}\_{\text{NP}}$. We refer to the corresponding penalties on $\boldsymbol{\beta}\_{\text{P}}$ as $\boldsymbol{\Lambda}\_{\text{P}}$. 
 
 Thus, the optimization problem can be written as 
 
 \begin{align}
-\hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\Lambda}^{-1} \boldsymbol{\Lambda}\boldsymbol{\beta}|^2_2 + |\boldsymbol{\beta}'|_1\right\\} \\\\\
+\hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \  \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} + \mathbf{X}\_{\text{P} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\beta}'|_1\right\\} \\\\\
 x^2 &= 5
 \end{align}
 
