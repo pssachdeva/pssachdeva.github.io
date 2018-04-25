@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  {% include head.html %}
+	{% include head.html %}
 
-  <body>
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <h3 class="masthead-title">
-            <ul id="masthead">
-              <li><a href="/" title="Home">home</a></li>
-              <li><a href="/research.html">research</a></li>
-              <li><a href="/teaching.html">teaching</a></li>
-              <li>projects</li>
-              <li><a href="/posts.html">posts</a></li>
-              
-          </h3>
-        </div>
-      </div>
-      <div class="container content">
-        {{ content }}
-      </div>
-    </div>
-  </body>
+	<body>
+		<div class="masthead">
+			<div class="container">
+				<h3 class="masthead-title">
+					<ul id="masthead">
+						<li><a href="/" title="Home">home</a></li>
+						<li><a href="/research.html">research</a></li>
+						<li><a href="/teaching.html">teaching</a></li>
+						<li>projects</li>
+						<li><a href="/posts.html">posts</a></li>
+				</h3>
+			</div>
+		</div>
+		<div class="container content">
+			{{ content }}
+		</div>
+		<hr>
+		<ul id="masthead">
+			<li><a href="mailto:pratik.sachdeva@berkeley.edu" target="_top"><i class="fas fa-3x fa-envelope"></i></a></li>
+			<li><a href="https://github.com/pssachdeva" target="_blank"><i class="fab fa-3x fa-github"></i></a></li>
+			<li><a href="https://medium.com/@psachdeva" target="_blank"><i class="fab fa-3x fa-medium"></i></a></li>
+		</ul>
+	</body>
 </html>
