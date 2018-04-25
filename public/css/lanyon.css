@@ -34,8 +34,8 @@ hr {
   position: relative;
   margin: 1.0rem 0;
   border: 0;
-  border-top: 1.5px solid #eee;
-  border-bottom: 1.5px solid #eee;
+  border-top: 1.0px solid #eee;
+  border-bottom: 1.0px solid #eee;
 }
 
 /*
@@ -52,22 +52,24 @@ hr {
 }
 
 
-/*
- * Container
- *
- * Center the page content.
- */
+/*****************
+*** Containers ***
+*****************/
 
 .container {
   max-width: 32rem;
 }
+.bottom-container {
+  max-width: 32rem;
+  margin-bottom: 3px;
+}
 @media (min-width: 38em) {
-  .container {
+  .container, .bottom-container {
     max-width: 32rem;
   }
 }
 @media (min-width: 56em) {
-  .container {
+  .container, .bottom-container {
     max-width: 38rem;
   }
 }
