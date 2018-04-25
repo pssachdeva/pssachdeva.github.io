@@ -27,9 +27,9 @@ Right now, we've written the problem such that the same penalty term is applied 
 
 where $\boldsymbol{\Lambda} = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. 
 
-<hr>
+<hr class="rule-header">
 <h2 align="center">Case 1: Non-zero Penalties</h2>
-<hr>
+<hr class="rule-header">
 
 For now, let's assume that $\lambda_i>0$ for all $i$. In the above optimization problem, define $\boldsymbol{\beta}' = \boldsymbol{\Lambda} \boldsymbol{\beta}$, so that
 
@@ -49,18 +49,20 @@ where $\mathbf{X}' = \mathbf{X}\boldsymbol{\Lambda}^{-1}$. What we're left with 
 
 This approach fails, however, if any of the $\lambda_i$ are equal to zero because $\boldsymbol{\Lambda}$ becomes singular. In this case, we need to take a different approach.
 
-<hr>
+<hr class="rule-header">
 <h2 align="center">Case 2: Unpenalized Coefficients</h2> 
-<hr>
+<hr class="rule-header">
 
-Let's now consider the case when some of the $\lambda_i$ are equal to zero. This implies that a subset of the $\beta_i$ are unpenalized in the regression. To make this explicit, let's split the $\beta_i$ into two sets of coefficients: those that are penalized $\boldsymbol{\beta}\_{\text{P}}$, and those that aren't $\boldsymbol{\beta}\_{\text{NP}}$. We refer to the corresponding penalties on $\boldsymbol{\beta}\_{\text{P}}$ as $\boldsymbol{\Lambda}\_{\text{P}}$. 
+Let's now consider the case when some of the $\lambda_i$ are equal to zero. This implies that a subset of the $\beta_i$ are unpenalized in the regression. To make this explicit, let's split the $\beta_i$ into two sets of coefficients: those that are penalized $\boldsymbol{\beta}\_{\text{P}}$, and those that aren't $\boldsymbol{\beta}\_{\text{NP}}$; their respective design matrices are $\mathbf{X}\_{\text{P}}$ and $\mathbf{X}\_{\text{NP}}$. Lastly, we refer to the corresponding penalties on $\boldsymbol{\beta}\_{\text{P}}$ as $\boldsymbol{\Lambda}\_{\text{P}}$. 
 
 Thus, the optimization problem can be written as 
 
 \begin{align}
-\hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \  \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} + \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\beta}\_{\text{P}}|_1\right\\} \\\\\
-x^2 &= 5
+\hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \  \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\right\\} 
 \end{align}
-
+We now make use of the projection matrix into the column space of $\mathbf{X}\_{\text{NP}}$: 
+\begin{align}
+\mathbf{P}\_{\text{NP}} &= \mathbf{X}\_{\text{NP}}\left(\mathbf{X}\_{\text{NP}}^T \mathbf{X}\_{\text{NP}}\right)^{-1}\mathbf{X}\_{\text{NP}}^T
+\end{align}
 
 
