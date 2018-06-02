@@ -91,10 +91,27 @@ hr {
 *** Posts ***
 ************/
 
-.rule-header {
+.rule-header-top {
+  position: relative;
+  border: 0;
+  border-top: 5.0px solid #eee;
+  border-bottom: 1.0px solid #eee;
+  margin: 0px;
+}
+
+.rule-header-bottom {
   position: relative;
   border: 0;
   border-top: 1.0px solid #eee;
   border-bottom: 1.0px solid #eee;
   margin: 0px;
+  margin-bottom: 10px
+}
+
+.rule-header {
+    position: relative;
+    border: 0;
+    border-top: 1.0px solid #eee;
+    border-bottom: 1.0px solid #eee;
+    margin: 0px;
 }

@@ -6,9 +6,9 @@ title: Useful Variations on the Lasso Penalty
 <hr>
 The lasso is a regression method in which we apply an $\ell_1$ penalty to the regression coefficients. It's useful because it performs feature selection: the lasso will only estimate the parameters for the regressors it likes, while the rest get set to zero. However, we might not always want to apply a lasso penalty uniformly - or even at all - to some coefficients. In this post, I'll detail how to rewrite those cases into a vanilla lasso problem. 
 
-<hr class="rule-header">
+<hr class="rule-header-top">
 <h2 align="center">Setup</h2>
-<hr class="rule-header">
+<hr class="rule-header-bottom">
 
 To be clear, let's suppose we have the $T \times N$ design matrix $\mathbf{X}$ consisting of $T$ observations of $N$ features. Furthermore, our dependent variable is denoted by the $T\times 1$ vector $\mathbf{y}$ while the the $N\times 1$ vector $\boldsymbol{\beta}$ contains the parameters to be estimated. Denoting the $\ell_p$ norm as $\vert\cdot\vert\_p$, the lasso objective can be written as
 
@@ -27,9 +27,9 @@ Right now, we've written the problem such that the same penalty term is applied 
 
 where $\boldsymbol{\Lambda} = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. 
 
-<hr class="rule-header">
+<hr class="rule-header-top">
 <h2 align="center">Case 1: Non-zero Penalties</h2>
-<hr class="rule-header">
+<hr class="rule-header-bottom">
 
 For now, let's assume that $\lambda_i>0$ for all $i$. In the above optimization problem, define $\boldsymbol{\beta}' = \boldsymbol{\Lambda} \boldsymbol{\beta}$, so that
 
@@ -49,9 +49,9 @@ where $\mathbf{X}' = \mathbf{X}\boldsymbol{\Lambda}^{-1}$. What we're left with 
 
 This approach fails, however, if any of the $\lambda_i$ are equal to zero because $\boldsymbol{\Lambda}$ becomes singular. In this case, we need to take a different approach.
 
-<hr class="rule-header">
+<hr class="rule-header-top">
 <h2 align="center">Case 2: Unpenalized Coefficients</h2> 
-<hr class="rule-header">
+<hr class="rule-header-bottom">
 
 Let's now consider the case when some of the $\lambda_i$ are equal to zero. This implies that a subset of the $\beta_i$ are unpenalized in the regression. To make this explicit, let's split the $\beta_i$ into two sets of coefficients: those that are penalized $\boldsymbol{\beta}\_{\text{P}}$, and those that aren't $\boldsymbol{\beta}\_{\text{NP}}$; their respective design matrices are $\mathbf{X}\_{\text{P}}$ and $\mathbf{X}\_{\text{NP}}$. Lastly, we refer to the corresponding penalties on $\boldsymbol{\beta}\_{\text{P}}$ as $\boldsymbol{\Lambda}\_{\text{P}}$. 
 
