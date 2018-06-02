@@ -61,11 +61,15 @@ Thus, the optimization problem can be written as
 \hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \  \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\right\\} 
 \end{align}
 
-Now, let's think about this like coordinate descent: suppose we already have a putative $\boldsymbol{\beta}\_{\text{P}}$, and we need to compute $\boldsymbol{\beta}\_{\text{NP}}$. Then the optimization procedure becomes 
+Now, let's think about this like coordinate descent: suppose we already have a putative $\boldsymbol{\beta}\_{\text{P}}$, and we need to compute $\boldsymbol{\beta}\_{\text{NP}}$. Then, the optimization procedure becomes 
 
 \begin{align}
-\hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 \right\\} 
+\hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \left\\{|\mathbf{y}- \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}}}\|^2_2 \right\\} 
 \end{align}
 
-where we've removed the penalty term since we're no longer optimizing for 
+where we've removed the penalty term since we're no longer optimizing for $\boldsymbol{\beta}\_{\text{P}}$. This optimization procedure is nothing other than a linear regression of the residuals $\mathbf{y} - \mathbf{X}\_{\text{NP}}$ on the non-penalized regressors $\mathbf{X}\_{\text{P}}$. Thus, the solution is simply that of standard linear regression:
+
+\begin{align}
+\hat{\boldsymbol{\beta}}\_{\text{NP}} &= \left(\mathbf{X}\_{\text{NP}}^T\mathbf{X}\_{\text{NP}}\right)^{-1} \mathbf{X}\_{\text{NP}}^T \left(\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right)
+\end{align}
 
