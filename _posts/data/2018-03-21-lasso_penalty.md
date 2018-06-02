@@ -92,7 +92,9 @@ where $\mathbf{P}\_{\text{NP}}$ is the projection matrix:
 and $\mathbf{M}\_{\text{NP}}$ is its corresponding residual matrix:
 
 \begin{align}
-\mathbf{M}\_{\text{NP}} &= \mathbf{I} - \mathbf{P}\_{\text{NP}}
+\mathbf{M}\_{\text{NP}} &= \mathbf{I} - \mathbf{P}\_{\text{NP}}.
 \end{align}
 
-ruff 
+The projection matrix will project a vector of true dependent variables into their predicted values according to the linear regression; the residual matrix returns the residuals between the true and predicted dependent variables.
+
+Thus, what we're left with is a simple Lasso problem. The procedure can be summarized as follows: calculate the residual matrix $\mathbf{M}\_{\text{NP}}$ corresponding to the non-penalized design matrix, and apply it to both the dependent variable $\mathbf{y}$ and the penalized regressors $\mathbf{X}\_{\text{P}}$. Then, perform a Lasso on these transformed variables (potentially turning to Case 1 if the penalties vary) to obtain $\hat{\boldsymbol{\beta}}\_{\text{P}}$. Finally, perform ordinary least squares to obtain the estimate for the non-penalized parameters $\hat{\boldsymbol{\beta}}\_{\text{NP}}$.
