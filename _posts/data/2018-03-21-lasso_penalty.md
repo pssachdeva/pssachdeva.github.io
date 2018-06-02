@@ -76,6 +76,7 @@ where we've removed the penalty term since we're no longer optimizing for $\bold
 Thus, everytime we have a guess at the optimal penalized parameters $\boldsymbol{\beta}\_{\text{P}}$, we already have a closed-form solution for  the non-penalized parameters $\boldsymbol{\beta}\_{\text{NP}}$. We can just go ahead and toss this closed-form expression in the original optimization procedure, and now optimize for $\boldsymbol{\beta}\_{\text{P}}$:
 
 \begin{align}
-\hat{\boldsymbol{\beta}}\_{\text{P}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\left[\left(\mathbf{X}\_{\text{NP}}^T\mathbf{X}\_{\text{NP}}\right)^{-1} \mathbf{X}\_{\text{NP}}^T \left(\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right)\right] - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\right\\} 
+\hat{\boldsymbol{\beta}}\_{\text{P}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}}{\operatorname{argmin}} \left\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\left[\left(\mathbf{X}\_{\text{NP}}^T\mathbf{X}\_{\text{NP}}\right)^{-1} \mathbf{X}\_{\text{NP}}^T \left(\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right)\right] - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 \right. \\\\\
+& \qquad \qquad \qquad \left. + |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\right\\} 
 \end{align}
 
