@@ -94,3 +94,5 @@ and $\mathbf{M}\_{\text{NP}}$ is its corresponding residual matrix:
 \begin{align}
 \mathbf{M}\_{\text{NP}} &= \mathbf{I} - \mathbf{P}\_{\text{NP}}
 \end{align}
+
+ruff $\Big\\{\Big\\}$
