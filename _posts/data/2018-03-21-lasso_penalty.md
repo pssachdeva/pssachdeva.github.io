@@ -80,7 +80,7 @@ Thus, everytime we have a guess at the optimal penalized parameters $\boldsymbol
 & \qquad \qquad \qquad \left. + |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\right\\} 
 \\\\\
 &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}}{\operatorname{argmin}} \left\\{\left|\left(\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right) - \mathbf{P}\_{\text{NP}}\left(\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right)\right|^2_2+ |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\right\\} \\\\\
-&= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}}{\operatorname{argmin}} \left\\{\left|\mathbf{M}\_{\text{NP}}\mathbf{y} - \mathbf{M}\_{\text{NP}}\mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right|^2_2+ |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\right\\},
+&= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}}{\operatorname{argmin}} \Big\\{\left|\mathbf{M}\_{\text{NP}}\mathbf{y} - \mathbf{M}\_{\text{NP}}\mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right|^2_2+ |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\Big\\},
 \end{align}
 
 where $\mathbf{P}\_{\text{NP}}$ is the projection matrix:
