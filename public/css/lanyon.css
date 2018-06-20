@@ -56,7 +56,7 @@ hr {
 }
 @media (min-width: 56em) {
   .container, .bottom-container {
-    max-width: 42rem;
+    max-width: 44rem;
   }
 }
 
