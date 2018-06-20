@@ -90,6 +90,14 @@ hr {
 /************
 *** Posts ***
 ************/
+.rule-header-title {
+  position: relative;
+  border: 0;
+  border-top: 5.0px solid #eee;
+  border-bottom: 1.0px solid #eee;
+  margin: 0px;
+  margin-bottom: 10px
+}
 
 .rule-header-top {
   position: relative;
