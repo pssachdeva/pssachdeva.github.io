@@ -3,6 +3,10 @@ layout: post
 title: Useful Variations on the Lasso Penalty
 ---
 <hr class="rule-header-title">
+<div class="page-title">
+  <h1 class="title">{{page.title}}</h1>
+</div>
+<hr class="rule-header-title">
 The lasso is a regression method in which we apply an $\ell_1$ penalty to the regression coefficients. It's useful because it performs feature selection: the lasso will only estimate the parameters for the regressors it likes, while the rest get set to zero. However, we might not always want to apply a lasso penalty uniformly - or even at all - to some coefficients. In this post, I'll detail how to rewrite those cases into a vanilla lasso problem. 
 
 <hr class="rule-header-top">
