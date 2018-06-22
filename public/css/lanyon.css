@@ -93,6 +93,7 @@ hr {
 .post-list {
   margin-left: 0;
   list-style: none;
+  padding: 0;
 }
 .rule-header-title-top {
   position: relative;
