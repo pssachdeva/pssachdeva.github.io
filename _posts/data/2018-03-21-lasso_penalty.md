@@ -3,9 +3,7 @@ layout: post
 title: Useful Variations on the Lasso Penalty
 ---
 <hr class="rule-header-title">
-<div class="page-title">
-  <h1 class="title">{{page.title}}</h1>
-</div>
+ <h1 class="title">{{page.title}}</h1>
 <hr class="rule-header-title">
 The lasso is a regression method in which we apply an $\ell_1$ penalty to the regression coefficients. It's useful because it performs feature selection: the lasso will only estimate the parameters for the regressors it likes, while the rest get set to zero. However, we might not always want to apply a lasso penalty uniformly - or even at all - to some coefficients. In this post, I'll detail how to rewrite those cases into a vanilla lasso problem. 
 
@@ -76,7 +74,7 @@ Here, we've removed the penalty term since we're no longer optimizing for $\bold
 \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \left(\mathbf{X}\_{\text{NP}}^T\mathbf{X}\_{\text{NP}}\right)^{-1} \mathbf{X}\_{\text{NP}}^T \left(\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right).
 \end{align}
 
-Thus, everytime we have a guess at the optimal penalized parameters $\boldsymbol{\beta}\_{\text{P}}$, we already have a closed-form solution for  the non-penalized parameters $\boldsymbol{\beta}\_{\text{NP}}$. We can just go ahead and toss this closed-form expression in the original optimization procedure, and now optimize for $\boldsymbol{\beta}\_{\text{P}}$:
+Thus, everytime we have a guess at the optimal penalized parameters $\boldsymbol{\beta}\_{\text{P}}$, we already have a closed-form solution for  the non-penalized parameters $\boldsymbol{\beta}\_{\text{NP}}$. We can just go ahead and toss this closed-form expression in the original optimization expression, and now optimize for $\boldsymbol{\beta}\_{\text{P}}$:
 
 \begin{align}
 \hat{\boldsymbol{\beta}}\_{\text{P}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\left[\left(\mathbf{X}\_{\text{NP}}^T\mathbf{X}\_{\text{NP}}\right)^{-1} \mathbf{X}\_{\text{NP}}^T \left(\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right)\right] - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 \notag \\\\\
