@@ -9,10 +9,10 @@ title: Posts
 	<ul class="post-list">
 		{% for post in site.posts %}
 		<li>
-			<h2>
+			<span style="float:left;"><h2>
 				<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-			</h2>
-			<span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+			</h2></span>
+			<span style="float:right;">{{ post.date | date: "%b %-d, %Y" }}</span>
 			<br>
 			<i>{{ post.excerpt }}</i>
 		</li>
