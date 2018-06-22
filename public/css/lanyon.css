@@ -90,6 +90,10 @@ hr {
 /************
 *** Posts ***
 ************/
+.post-list {
+  margin-left: 0;
+  list-style: none;
+}
 .rule-header-title-top {
   position: relative;
   border: 0;

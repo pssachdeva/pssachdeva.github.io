@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Useful Variations on the Lasso Penalty
+excerpt: Transforming a lasso regression with different penalties into a vanilla lasso regression.
 ---
 <hr class="rule-header-title-top">
  <h1 align="center">{{page.title}}</h1>
