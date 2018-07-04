@@ -36,7 +36,7 @@ First, let's compute the log-likelihood:
 We then need the derivative with respect to $x$:
 
 \begin{align}
-\frac{d}{dx} \log P[\mathbf{r}|x] &= 0 - \frac{1}{\det \boldsymbol{\Sigma}(x)} \frac{d}{dx} \det\boldsymbol{\Sigma}(x) \\\\\\
+\frac{d}{dx} \log P[\mathbf{r}|x] &= 0 - \frac{1}{2}\frac{1}{\det \boldsymbol{\Sigma}(x)} \frac{d}{dx} \det\boldsymbol{\Sigma}(x) \\\\\\
 &- \frac{1}{2} \frac{d}{dx} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}(x)^{-1}(\mathbf{r}-\mathbf{f}(x)) \\\\\\
 &-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \frac{d}{dx}\boldsymbol{\Sigma}(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
 &-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}(x)^{-1} \frac{d}{dx}(\mathbf{r}-\mathbf{f}(x))
@@ -51,7 +51,20 @@ First, we can evaluate the derivative of a determinant using <a href="https://en
 where $\mathbf{A}'(x) = \frac{d}{dx}\mathbf{A}(x)$. Thus,
 
 \begin{align}
-\frac{d}{dx} \log P[\mathbf{r}|x] &= \text{tr}\left[\mathbf{A}(x)^{-1} \mathbf{A}'(x)\right] +\frac{1}{2} \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
+\frac{d}{dx} \log P[\mathbf{r}|x] &= -\frac{1}{2}\text{tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] +\frac{1}{2} \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
 & \qquad \qquad - \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}'(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
-& \qquad \qquad +\frac{1}{2}(\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}(x)^{-1} \mathbf{f}'(x)
+& \qquad \qquad +\frac{1}{2}(\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}(x)^{-1} \mathbf{f}'(x).
+\end{align}
+
+In the above expression, the second and fourth terms are equal since they're both scalars and transposes of each other. As for the derivative of the matrix inverse, we note that
+
+\begin{align}
+\frac{d}{dx} \boldsymbol{\Sigma}(x)^{-1}  &= -\boldsymbol{\Sigma}(x)^{-1} \frac{d\boldsymbol{\Sigma}(x)}{dx} \boldsymbol{\Sigma}(x)^{1}
+\end{align}
+
+which can be derived by differentiating the definition of the matrix inverse $\boldsymbol{\Sigma}(x) \boldsymbol{\Sigma}(x)^{-1} = \mathbf{I}$. Thus, we have
+
+\begin{align}
+\frac{d}{dx} \log P[\mathbf{r}|x] &= -\frac{1}{2}\text{tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] + \frac{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r} - \mathbf{f}(x)) \\\\\\
+& \qquad\qquad - \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x) \boldsymbol{\Sigma}(x)^{-1}(\mathbf{r} - \mathbf{f}(x))^T
 \end{align}
