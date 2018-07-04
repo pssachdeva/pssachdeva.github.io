@@ -16,7 +16,7 @@ Now, suppose we can write $x$ in some $N$-dimensional representation $\mathbf{r}
 where $\boldsymbol{\epsilon}$ is drawn from an $N$-dimensional Gaussian distribution with zero mean and covariance $\boldsymbol{\Sigma}(x)$ (i.e., the covariance is potentially dependent on $x$). Then, the conditional distribution $P[\mathbf{r}\vert x]$ is a simple Gaussian distribution by virtue of the Gaussian noise $\boldsymbol{\epsilon}$:
 
 \begin{align}
-P[\mathbf{r}|x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}}\exp\left[-\frac{1}{2}(\mathbf{r}-\mathbf{f}(x))^T \boldsymbol{\Sigma}^{-1}(x) (\mathbf{r} - \mathbf{f}(x))\right].
+P[\mathbf{r}|x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}}\exp\left[-\frac{1}{2}(\mathbf{r}-\mathbf{f}(x))(x)^{-1} (\mathbf{r} - \mathbf{f}(x))\right].
 \end{align}
 
 Thus, the Fisher information of $x$ given the representation $\mathbf{r}$ can be written as 
@@ -30,22 +30,28 @@ First, let's compute the log-likelihood:
 
 \begin{align}
 \log P[\mathbf{r}|x] &= -\frac{N}{2}\log(2\pi) -\frac{1}{2} \log \det \boldsymbol{\Sigma} \notag \\\\\\
-&-\frac{1}{2} \left(\mathbf{r} - \mathbf{f}(x)\right)^T \boldsymbol{\Sigma}^{-1}(x) \left(\mathbf{r} - \mathbf{f}(x)\right).
+&-\frac{1}{2} \left(\mathbf{r} - \mathbf{f}(x)\right)^T \boldsymbol{\Sigma}(x)^{-1} \left(\mathbf{r} - \mathbf{f}(x)\right).
 \end{align}
 
 We then need the derivative with respect to $x$:
 
 \begin{align}
 \frac{d}{dx} \log P[\mathbf{r}|x] &= 0 - \frac{1}{\det \boldsymbol{\Sigma}(x)} \frac{d}{dx} \det\boldsymbol{\Sigma}(x) \\\\\\
-&- \frac{1}{2} \frac{d}{dx} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}^{-1}(x)(\mathbf{r}-\mathbf{f}(x)) \\\\\\
-&-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \frac{d}{dx} \frac{d}{dx}\boldsymbol{\Sigma}^{-1}(x) (\mathbf{r}-\mathbf{f}(x)) \\\\\\
-&-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}^{-1}(x) \frac{d}{dx}(\mathbf{r}-\mathbf{f}(x))
+&- \frac{1}{2} \frac{d}{dx} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}(x)^{-1}(\mathbf{r}-\mathbf{f}(x)) \\\\\\
+&-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \frac{d}{dx}\boldsymbol{\Sigma}(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
+&-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}(x)^{-1} \frac{d}{dx}(\mathbf{r}-\mathbf{f}(x))
 \end{align}
 
 First, we can evaluate the derivative of a determinant using <a href="https://en.wikipedia.org/wiki/Jacobi%27s_formula">Jacobi's formula</a>, which states that 
 
 \begin{align}
-\frac{d}{dx} \det \mathbf{A}(x) &= \det \mathbf{A}(x) \text{tr}\left(\mathbf{A}(x)^{-1} \mathbf{A}'(x)\right)
+\frac{d}{dx} \det \mathbf{A}(x) &= \det \mathbf{A}(x) \text{ tr}\left[\mathbf{A}(x)^{-1} \mathbf{A}'(x)\right]
 \end{align}
 
-where $\mathbf{A}'(x) = \frac{d}{dx}\mathbf{A}(x)$. 
+where $\mathbf{A}'(x) = \frac{d}{dx}\mathbf{A}(x)$. Thus,
+
+\begin{align}
+\frac{d}{dx} \log P[\mathbf{r}|x] &= \text{tr}\left[\mathbf{A}(x)^{-1} \mathbf{A}'(x)\right] +\frac{1}{2} \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
+& \qquad \qquad - \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}'(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
+& \qquad \qquad +\frac{1}{2}(\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}(x)^{-1} \mathbf{f}'(x)
+\end{align}
