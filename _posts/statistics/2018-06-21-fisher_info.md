@@ -41,3 +41,11 @@ We then need the derivative with respect to $x$:
 &-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \frac{d}{dx} \frac{d}{dx}\boldsymbol{\Sigma}^{-1}(x) (\mathbf{r}-\mathbf{f}(x)) \\\\\\
 &-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}^{-1}(x) \frac{d}{dx}(\mathbf{r}-\mathbf{f}(x))
 \end{align}
+
+First, we can evaluate the derivative of a determinant using <a href="https://en.wikipedia.org/wiki/Jacobi%27s_formula">Jacobi's formula</a>, which states that 
+
+\begin{align}
+\frac{d}{dx} \det \mathbf{A}(x) &= \det \mathbf{A}(x) \text{tr}\left(\mathbf{A}(x)^{-1} \mathbf{A}'(x)\right)
+\end{align}
+
+where $\mathbf{A}'(x) = \frac{d}{dx}\mathbf{A}(x)$. 
