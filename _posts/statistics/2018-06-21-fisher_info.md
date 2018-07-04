@@ -22,6 +22,6 @@ P[\mathbf{r}|x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}}\exp\lef
 Thus, the Fisher information of $x$ given the representation $\mathbf{r}$ can be written as 
 
 \begin{align}
-I_F(x) &= \left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\right] \\\\\
-&=  \int d\mathbf{r} P[\mathbf{r} \vert x] \left(\frac{d^2}{dx^2} \log P[\mathbf{r} \vert x])^2
+I_F(x) &= \mathbb{E}\left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\right] \\\\\\
+&=  \int d\mathbf{r} P[\mathbf{r} \vert x] \left(\frac{d}{dx} \log P[\mathbf{r} \vert x]\right)^2
 \end{align}
