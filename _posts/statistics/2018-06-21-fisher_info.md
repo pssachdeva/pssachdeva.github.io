@@ -29,11 +29,15 @@ I_F(x) &= \mathbb{E}\left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\
 First, let's compute the log-likelihood:
 
 \begin{align}
-\log P[\mathbf{r}|x] &= -\frac{N}{2}\log(2\pi) -\frac{1}{2} \log \det \boldsymbol{\Sigma} -\frac{1}{2} \left(\mathbf{r} - \mathbf{f}(x)\right)^T \boldsymbol{\Sigma}^{-1}(x) \left(\mathbf{r} - \mathbf{f}(x)\right).
+\log P[\mathbf{r}|x] &= -\frac{N}{2}\log(2\pi) -\frac{1}{2} \log \det \boldsymbol{\Sigma} \notag \\\\\\
+&-\frac{1}{2} \left(\mathbf{r} - \mathbf{f}(x)\right)^T \boldsymbol{\Sigma}^{-1}(x) \left(\mathbf{r} - \mathbf{f}(x)\right).
 \end{align}
 
 We then need the derivative with respect to $x$:
 
 \begin{align}
-\frac{d}{dx} \log P[\mathbf{r}|x] &= 0 - \frac{1}{\det \boldsymbol{\Sigma}(x)} \frac{d}{dx} \det\boldsymbol{Sigma}(x) - \frac{1}{2} \frac{d}{dx} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}^{-1}(x)(\mathbf{r}-\mathbf{f}(x))
+\frac{d}{dx} \log P[\mathbf{r}|x] &= 0 - \frac{1}{\det \boldsymbol{\Sigma}(x)} \frac{d}{dx} \det\boldsymbol{\Sigma}(x) \\\\\\
+&- \frac{1}{2} \frac{d}{dx} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}^{-1}(x)(\mathbf{r}-\mathbf{f}(x)) \\\\\\
+&-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \frac{d}{dx} \frac{d}{dx}\boldsymbol{\Sigma}^{-1}(x) (\mathbf{r}-\mathbf{f}(x)) \\\\\\
+&-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}^{-1}(x) \frac{d}{dx}(\mathbf{r}-\mathbf{f}(x))
 \end{align}
