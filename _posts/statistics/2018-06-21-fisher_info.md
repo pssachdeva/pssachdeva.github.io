@@ -59,12 +59,12 @@ where $\mathbf{A}'(x) = \frac{d}{dx}\mathbf{A}(x)$. Thus,
 In the above expression, the second and fourth terms are equal since they're both scalars and transposes of each other. As for the derivative of the matrix inverse, we note that
 
 \begin{align}
-\frac{d}{dx} \boldsymbol{\Sigma}(x)^{-1}  &= -\boldsymbol{\Sigma}(x)^{-1} \frac{d\boldsymbol{\Sigma}(x)}{dx} \boldsymbol{\Sigma}(x)^{1}
+\frac{d}{dx} \boldsymbol{\Sigma}(x)^{-1}  &= -\boldsymbol{\Sigma}(x)^{-1} \frac{d\boldsymbol{\Sigma}(x)}{dx} \boldsymbol{\Sigma}(x)^{-1}
 \end{align}
 
 which can be derived by differentiating the definition of the matrix inverse $\boldsymbol{\Sigma}(x) \boldsymbol{\Sigma}(x)^{-1} = \mathbf{I}$. Thus, we have
 
 \begin{align}
-\frac{d}{dx} \log P[\mathbf{r}|x] &= -\frac{1}{2}\text{tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] + \frac{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r} - \mathbf{f}(x)) \\\\\\
-& \qquad\qquad - \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x) \boldsymbol{\Sigma}(x)^{-1}(\mathbf{r} - \mathbf{f}(x))^T
+\frac{d}{dx} \log P[\mathbf{r}|x] &= -\frac{1}{2}\text{tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] + \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r} - \mathbf{f}(x)) \\\\\\
+& \qquad - \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x) \boldsymbol{\Sigma}(x)^{-1}(\mathbf{r} - \mathbf{f}(x))^T
 \end{align}
