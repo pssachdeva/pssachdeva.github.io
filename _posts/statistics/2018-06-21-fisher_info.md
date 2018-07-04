@@ -16,7 +16,7 @@ Now, suppose we can write $x$ in some $N$-dimensional representation $\mathbf{r}
 where $\boldsymbol{\epsilon}$ is drawn from an $N$-dimensional Gaussian distribution with zero mean and covariance $\boldsymbol{\Sigma}(x)$ (i.e., the covariance is potentially dependent on $x$). Then, the conditional distribution $P[\mathbf{r}\vert x]$ is a simple Gaussian distribution by virtue of the Gaussian noise $\boldsymbol{\epsilon}$:
 
 \begin{align}
-P[\mathbf{r}|x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}\exp\left[-\frac{1}{2}(\mathbf{r}-\mathbf{f}(x))^T \boldsymbol{\Sigma}^{-1}(x) (\mathbf{r} - \mathbf{f}(x))\right].
+P[\mathbf{r}|x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}}\exp\left[-\frac{1}{2}(\mathbf{r}-\mathbf{f}(x))^T \boldsymbol{\Sigma}^{-1}(x) (\mathbf{r} - \mathbf{f}(x))\right].
 \end{align}
 
 Thus, the Fisher information of $x$ given the representation $\mathbf{r}$ can be written as 
