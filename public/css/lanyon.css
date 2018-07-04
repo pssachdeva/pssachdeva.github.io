@@ -56,7 +56,7 @@ hr {
 }
 @media (min-width: 56em) {
   .container, .bottom-container {
-    max-width: 44rem;
+    max-width: 40rem;
   }
 }
 
@@ -110,6 +110,15 @@ hr {
   border-top: 5.0px solid #eee;
   border-bottom: 1.0px solid #eee;
   margin: 0px;
+  margin-bottom: 10px
+}
+
+.rule-header-middle {
+  position: relative;
+  border: 0;
+  border-top: 5.0px solid #eee;
+  border-bottom: 1.0px solid #eee;
+  margin-top: 10px;
   margin-bottom: 10px
 }
 
