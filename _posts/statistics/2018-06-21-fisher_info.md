@@ -29,6 +29,5 @@ I_F(x) &= \mathbb{E}\left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\
 First, let's compute the log-likelihood:
 
 \begin{align}
-\log P[\mathbf{r}|x] &= -\frac{N}{2}\log(2\pi) -\frac{1}{2} \log \det \boldsymbol{\Sigma} \notag \\\\\\
-&\qquad -\frac{1}{2} \left(\mathbf{r} - \mathbf{f}(x)\right)^T \boldsymbol{\Sigma}^{-1}(x) \left(\mathbf{r} - \mathbf{f}(x)\right).
+\log P[\mathbf{r}|x] &= -\frac{N}{2}\log(2\pi) -\frac{1}{2} \log \det \boldsymbol{\Sigma} -\frac{1}{2} \left(\mathbf{r} - \mathbf{f}(x)\right)^T \boldsymbol{\Sigma}^{-1}(x) \left(\mathbf{r} - \mathbf{f}(x)\right).
 \end{align}
