@@ -26,7 +26,7 @@ I_F(x) \leq \frac{1}{\text{Var}\left[\hat{x}(\mathbf{r})\right]}.
 
 Thus, if we have a small Fisher information, then any estimator for $x$ will have a large variance: decoding $x$ from $\mathbf{r}$ will always be hard. 
 
-Given a log-likelihood $\log P[\mathbf{r}|x]$, there is a mathematical expression for the Fisher information:
+Given a log-likelihood $\log P[\mathbf{r} \vert x]$, there is a mathematical expression for the Fisher information:
 
 \begin{align}
 I_F(x) &= \mathbb{E}_{\mathbf{r}\vert x}\left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\right].
