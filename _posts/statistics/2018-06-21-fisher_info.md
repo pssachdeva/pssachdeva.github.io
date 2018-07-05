@@ -34,13 +34,15 @@ I_F(x) &= \mathbb{E}_{\mathbf{r}\vert x}\left[\left(\frac{d}{dx} \log P[\mathbf{
 
 That is, the Fisher information is the average derivative of the log-likelihood function. 
 
-In computational neuroscience, equation (1) is a simple encoding scheme modeling neural activity: an incoming stimulus $x$ is transformed into a (noisy) neural representation $\mathbf{r}$. Neural systems probably want to decode the stimulus at some point, so the Fisher information is a quantity of interest. In equation (1), we can exactly calculate the Fisher information in the case of Gaussian $\boldsymbol{\epsilon}$. In this post, we'll slog through that derivation and highlight the <b>linear Fisher information</b>, a component of the end expression that has been particularly important in the computational neuroscience literature. 
+In computational neuroscience, equation (1) is a simple encoding scheme modeling neural activity: an incoming stimulus $x$ is transformed into a (noisy) neural representation $\mathbf{r}$. Neural systems probably want to decode the stimulus at some point, so the Fisher information is a quantity of interest. In equation (1), we can analytically determine the Fisher information in the case of Gaussian $\boldsymbol{\epsilon}$. 
+
+In this post, we'll slog through that derivation and highlight the <b>linear Fisher information</b>, a component of the end expression that has been particularly important in the computational neuroscience literature. 
 
 <hr class="rule-header-top">
 <h2 align="center">Deriving the Fisher Information</h2>
 <hr class="rule-header-bottom">
 
-where $\boldsymbol{\epsilon}$ is drawn from an $N$-dimensional Gaussian distribution with zero mean and covariance $\boldsymbol{\Sigma}(x)$ (i.e., the covariance is potentially dependent on $x$). Then, the conditional distribution $P[\mathbf{r}\vert x]$ is a simple Gaussian distribution by virtue of the Gaussian noise $\boldsymbol{\epsilon}$:
+Assume $\boldsymbol{\epsilon}$ is drawn from an $N$-dimensional Gaussian distribution with zero mean and covariance $\boldsymbol{\Sigma}(x)$ (i.e., the covariance is potentially dependent on $x$). Then, the conditional distribution $P[\mathbf{r}\vert x]$ is a simple Gaussian distribution by virtue of the Gaussian noise $\boldsymbol{\epsilon}$:
 
 \begin{align}
 P[\mathbf{r}|x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}}\exp\left[-\frac{1}{2}(\mathbf{r}-\mathbf{f}(x))(x)^{-1} (\mathbf{r} - \mathbf{f}(x))\right].
