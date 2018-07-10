@@ -6,7 +6,7 @@ excerpt: Transforming a lasso regression with different penalties into a vanilla
 <hr class="rule-header-title-top">
 <h1 align="center">{{page.title}}</h1>
 <hr class="rule-header-title-bottom">
-The lasso is a regression method in which we apply an $\ell_1$ penalty to the regression coefficients. It's useful because it performs feature selection: the lasso will only estimate the parameters for the regressors it likes, while the rest get set to zero. However, we might not always want to apply a lasso penalty uniformly - or even at all - to some coefficients. In this post, I'll detail how to rewrite those cases into a vanilla lasso problem. 
+The lasso is a regression method in which an $\ell_1$ penalty is applied to the regression coefficients. It's useful because it performs feature selection: the lasso will only estimate the parameters for the regressors it likes, while the rest get set to zero. However, we might not always want to apply a lasso penalty uniformly across the coefficients. Instead, we might want to double the lasso penalty for some coefficients, or even turn it off completely for others. In this post, I'll detail how to rewrite those cases into a vanilla lasso problem. 
 
 <hr class="rule-header-top">
 <h2 align="center">Setup</h2>
@@ -15,7 +15,7 @@ The lasso is a regression method in which we apply an $\ell_1$ penalty to the re
 To be clear, let's suppose we have the $T \times N$ design matrix $\mathbf{X}$ consisting of $T$ observations of $N$ features. Furthermore, the response variable is denoted by the $T\times 1$ vector $\mathbf{y}$ while the $N\times 1$ vector $\boldsymbol{\beta}$ contains the parameters to be estimated. Denoting the $\ell_p$ norm as $\vert\cdot\vert\_p$, the lasso objective can be written as
 
 \begin{align}
-\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \lambda |\boldsymbol{\beta}|_1\Big\\}
+\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \lambda |\boldsymbol{\beta}|_1\Big\\},
 \end{align}
 
 where $\lambda$ is a hyperparameter that we usually choose during cross-validation. It tells us how strongly we should enforce sparsity when choosing $\boldsymbol{\beta}$. 
@@ -27,7 +27,7 @@ Right now, we've written the problem such that the same penalty term is applied 
 &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + |\boldsymbol{\Lambda} \boldsymbol{\beta}|_1\Big\\}.
 \end{align}
 
-where $\boldsymbol{\Lambda} = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. 
+where $\boldsymbol{\Lambda} = \text{diag}\left(\lambda_1, \lambda_2, \ldots, \lambda_N\right)$. Our goal, then, is to rewrite equation (3) in a similar manner as equation (1), with only one penalty.
 
 <hr class="rule-header-top">
 <h2 align="center">Case 1: Non-zero Penalties</h2>
@@ -39,7 +39,7 @@ For now, let's assume that $\lambda_i>0$ for all $i$. In the above optimization 
 \hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + |\boldsymbol{\beta}'|_1\Big\\}.
 \end{align}
 
-This is starting to look like a vanilla Lasso: the pesky $\boldsymbol{\Lambda}$ has been absorbed into the parameters. A consequence of this is that the "new" penalty term is simply equal to one. We're not done yet, as we need to rewrite $\boldsymbol{\beta}$ in the reconstruction term. To do so, we need a $\boldsymbol{\Lambda}$: it's not immediately available, but we can concoct one as follows:
+In other words, we've just rescaled each of the $\beta_i$ according to their corresponding $\lambda_i$. This is starting to look like a vanilla Lasso: the pesky $\boldsymbol{\Lambda}$ has been absorbed into the parameters. A consequence of this is that the "new" penalty term is simply equal to one. We're not done yet, as we need to rewrite $\boldsymbol{\beta}$ in the reconstruction term. To do so, we need a $\boldsymbol{\Lambda}$: it's not immediately available, but we can concoct one as follows:
 
 \begin{align}
 \hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\Lambda}^{-1} \boldsymbol{\Lambda}\boldsymbol{\beta}|^2_2 + |\boldsymbol{\beta}'|_1\Big\\} \\\\\
