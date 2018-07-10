@@ -39,7 +39,7 @@ For now, let's assume that $\lambda_i>0$ for all $i$. In the above optimization 
 \hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + |\boldsymbol{\beta}'|_1\Big\\}.
 \end{align}
 
-In other words, we've just rescaled each of the $\beta_i$ according to their corresponding $\lambda_i$. This is starting to look like a vanilla Lasso: the pesky $\boldsymbol{\Lambda}$ has been absorbed into the parameters. A consequence of this is that the "new" penalty term is simply equal to one. We're not done yet, as we need to rewrite $\boldsymbol{\beta}$ in the reconstruction term. To do so, we need a $\boldsymbol{\Lambda}$: it's not immediately available, but we can concoct one as follows:
+This is starting to look like a vanilla Lasso: the pesky $\boldsymbol{\Lambda}$ has been absorbed into the parameters. As a consequence, the "new" penalty term is simply equal to one. We're not done yet, as we need to rewrite $\boldsymbol{\beta}$ in the reconstruction term. To do so, we need a $\boldsymbol{\Lambda}$: it's not immediately available, but we can concoct one as follows:
 
 \begin{align}
 \hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\Lambda}^{-1} \boldsymbol{\Lambda}\boldsymbol{\beta}|^2_2 + |\boldsymbol{\beta}'|_1\Big\\} \\\\\
@@ -47,9 +47,9 @@ In other words, we've just rescaled each of the $\beta_i$ according to their cor
 &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}' \boldsymbol{\beta}'|^2_2 + |\boldsymbol{\beta}'|_1\Big\\},
 \end{align}
 
-where $\mathbf{X}' = \mathbf{X}\boldsymbol{\Lambda}^{-1}$. What we're left with is a vanilla Lasso problem! The procedure is simple: for some choice of $\boldsymbol{\Lambda}$, transform your design matrix $\mathbf{X} \rightarrow \mathbf{X}\boldsymbol{\Lambda}^{-1}$ and run an ordinary Lasso with regularization term set to one. 
+where $\mathbf{X}' = \mathbf{X}\boldsymbol{\Lambda}^{-1}$. What we're left with is a vanilla Lasso problem! The procedure is simple: for some choice of $\boldsymbol{\Lambda}$, transform your design matrix $\mathbf{X} \rightarrow \mathbf{X}\boldsymbol{\Lambda}^{-1}$ and run an ordinary Lasso with a $\lambda=1$.
 
-This approach fails, however, if any of the $\lambda_i$ are equal to zero since $\boldsymbol{\Lambda}$ becomes singular. In this case, we need to take a different approach.
+This approach fails, however, if any of the $\lambda_i$ are equal to zero, since $\boldsymbol{\Lambda}$ becomes singular. In this case, we need to take a different approach.
 
 <hr class="rule-header-top">
 <h2 align="center">Case 2: Unpenalized Coefficients</h2> 
