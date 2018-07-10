@@ -104,14 +104,14 @@ Thus, what we're left with is a simple Lasso problem. The procedure can be summa
 <hr class="rule-header-top">
 <h2 align="center">Summary</h2> 
 <hr class="rule-header-bottom">
-We have a lasso problem 
+Given the following lasso problem,
 \begin{align}
 \hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\Big\\}
 \end{align}
-To rewrite this as a lasso problem with a uniform penalty $\lambda$, proceed as follows:
+we can rewrite this with a uniform penalty $\lambda$ by proceeding as follows:
 <ol>
 	<li><b>Project out the non-penalized coefficients:</b> Calculate the residual matrix for the non-penalized coefficients ($\lambda_i=0$): $$\mathbf{M}_{\text{NP}} = \mathbf{I} - \mathbf{X}_{\text{NP}}\left(\mathbf{X}_{\text{NP}}^T\mathbf{X}_{\text{NP}}\right)^{-1} \mathbf{X}_{\text{NP}}^T$$
 	and apply it to both the response variable $\left(\mathbf{y} \rightarrow \mathbf{M}_{\text{NP}}\mathbf{y}\right)$ and penalized design matrix $\left(\mathbf{X}_{\text{P}} \rightarrow \mathbf{M}_{\text{NP}} \mathbf{X}_{\text{P}}\right)$.
 	</li> 
-	<li>sup</li>
+	<li><b>Rescale the projected design matrix:</b> Transform the projected design matrix according to the diagonal matrix of the lasso penalties: $\mathbf{M}_{\text{NP}} \mathbf{X}_{\text{P}} \rightarrow \mathbf{M}_{\text{NP}} \mathbf{X}_{\text{P}} \boldsymbol{\Lambda}_{\text{P}}^{-1}$</li>
 </ol>
