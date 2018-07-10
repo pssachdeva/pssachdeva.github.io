@@ -63,7 +63,7 @@ Thus, the optimization problem can be written as
 \hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \  \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\Big\\}.
 \end{align}
 
-Let's think about this like coordinate descent: suppose we already have a putative $\boldsymbol{\beta}\_{\text{P}}$, and we need to compute $\boldsymbol{\beta}\_{\text{NP}}$. We have
+Let's think about this like coordinate descent: suppose we already have a putative $\boldsymbol{\beta}\_{\text{P}}$ and we just need to compute $\boldsymbol{\beta}\_{\text{NP}}$. We have
 
 \begin{align}
 \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \Big\\{\left|\mathbf{y}- \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}}\right|^2_2 \Big\\},
@@ -97,15 +97,19 @@ and $\mathbf{M}\_{\text{NP}}$ is its corresponding residual matrix:
 \mathbf{M}\_{\text{NP}} &= \mathbf{I} - \mathbf{P}\_{\text{NP}}.
 \end{align}
 
-The projection matrix will project a vector of true dependent variables ($\mathbf{y}$) into their predicted values according to the linear regression ($\hat{\mathbf{y}}$); the residual matrix returns the residuals between the true and predicted dependent variables ($\mathbf{y} - \hat{\mathbf{y}}$).
+The projection matrix will project a vector of true dependent variables ($\mathbf{y}$) onto their predicted values ($\hat{\mathbf{y}}$) according to the linear regression; the residual matrix returns the residuals between the true and predicted dependent variables ($\mathbf{y} - \hat{\mathbf{y}}$).
 
 Thus, what we're left with is a simple Lasso problem. The procedure can be summarized as follows: calculate the residual matrix $\mathbf{M}\_{\text{NP}}$ corresponding to the non-penalized design matrix, and apply it to both the dependent variable $\mathbf{y}$ and the penalized regressors $\mathbf{X}\_{\text{P}}$. Then, perform a Lasso on these transformed variables (potentially turning to Case 1 if the penalties vary) to obtain $\hat{\boldsymbol{\beta}}\_{\text{P}}$. Finally, perform ordinary least squares to obtain the estimate for the non-penalized parameters $\hat{\boldsymbol{\beta}}\_{\text{NP}}$.
 
 <hr class="rule-header-top">
 <h2 align="center">Summary</h2> 
 <hr class="rule-header-bottom">
-
+We have a lasso problem 
+\begin{align}
+\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\Big\\}
+\end{align}
+To rewrite this as a lasso problem with a uniform penalty $\lambda$, proceed as follows:
 <ol>
-	<li>sup</li>
+	<li><b>Project out the unpenalized coefficients: </li> 
 	<li>sup</li>
 </ol>
