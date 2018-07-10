@@ -55,7 +55,7 @@ This approach fails, however, if any of the $\lambda_i$ are equal to zero, since
 <h2 align="center">Case 2: Unpenalized Coefficients</h2> 
 <hr class="rule-header-bottom">
 
-Let's now consider the case when some of the $\lambda_i$ are equal to zero. This implies that a subset of the $\beta_i$ are unpenalized in the regression. To make this explicit, let's split $\boldsymbol{\beta}$ into two sets of coefficients: those that are penalized $\boldsymbol{\beta}\_{\text{P}}$, and those that aren't $\boldsymbol{\beta}\_{\text{NP}}$; their respective design matrices are $\mathbf{X}\_{\text{P}}$ and $\mathbf{X}\_{\text{NP}}$. Lastly, we refer to the corresponding penalties on $\boldsymbol{\beta}\_{\text{P}}$ as $\boldsymbol{\Lambda}\_{\text{P}}$. 
+Now, we'll assume some of the $\lambda_i$ are equal to zero. This implies that a subset of the $\beta_i$ are unpenalized in the regression. To make this explicit, let's split $\boldsymbol{\beta}$ into two sets of coefficients: those that are penalized $\boldsymbol{\beta}\_{\text{P}}$, and those that aren't $\boldsymbol{\beta}\_{\text{NP}}$; their respective design matrices are $\mathbf{X}\_{\text{P}}$ and $\mathbf{X}\_{\text{NP}}$. Lastly, we refer to the corresponding penalties on $\boldsymbol{\beta}\_{\text{P}}$ as $\boldsymbol{\Lambda}\_{\text{P}}$. 
 
 Thus, the optimization problem can be written as 
 
@@ -63,13 +63,13 @@ Thus, the optimization problem can be written as
 \hat{\boldsymbol{\beta}}\_{\text{P}}, \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{P}}, \  \hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\|^2_2 + |\boldsymbol{\Lambda}\_{\text{P}}\boldsymbol{\beta}\_{\text{P}}|_1\Big\\}.
 \end{align}
 
-Now, let's think about this like coordinate descent: suppose we already have a putative $\boldsymbol{\beta}\_{\text{P}}$, and we need to compute $\boldsymbol{\beta}\_{\text{NP}}$. Then, the optimization procedure becomes 
+Let's think about this like coordinate descent: suppose we already have a putative $\boldsymbol{\beta}\_{\text{P}}$, and we need to compute $\boldsymbol{\beta}\_{\text{NP}}$. We have
 
 \begin{align}
-\hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \Big\\{\left|\mathbf{y}- \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}}\right|^2_2 \Big\\}.
+\hat{\boldsymbol{\beta}}\_{\text{NP}} &= \underset{\hat{\boldsymbol{\beta}}\_{\text{NP}}}{\operatorname{argmin}} \Big\\{\left|\mathbf{y}- \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}} - \mathbf{X}\_{\text{NP}}\boldsymbol{\beta}\_{\text{NP}}\right|^2_2 \Big\\},
 \end{align}
 
-Here, we've removed the penalty term since we're no longer optimizing for $\boldsymbol{\beta}\_{\text{P}}$. This optimization procedure is nothing other than an unregularized regression of the residuals $\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}$ on the non-penalized regressors $\mathbf{X}\_{\text{NP}}$. The solution is simply that of standard linear regression:
+where we've removed the penalty term since we're no longer optimizing for $\boldsymbol{\beta}\_{\text{P}}$. Equation (9) is nothing other than an unregularized regression of the residuals $\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}$ on the non-penalized regressors $\mathbf{X}\_{\text{NP}}$. That's just ordinary linear regression! Its solution is simply
 
 \begin{align}
 \hat{\boldsymbol{\beta}}\_{\text{NP}} &= \left(\mathbf{X}\_{\text{NP}}^T\mathbf{X}\_{\text{NP}}\right)^{-1} \mathbf{X}\_{\text{NP}}^T \left(\mathbf{y} - \mathbf{X}\_{\text{P}} \boldsymbol{\beta}\_{\text{P}}\right).
@@ -97,7 +97,7 @@ and $\mathbf{M}\_{\text{NP}}$ is its corresponding residual matrix:
 \mathbf{M}\_{\text{NP}} &= \mathbf{I} - \mathbf{P}\_{\text{NP}}.
 \end{align}
 
-The projection matrix will project a vector of true dependent variables into their predicted values according to the linear regression; the residual matrix returns the residuals between the true and predicted dependent variables.
+The projection matrix will project a vector of true dependent variables ($\mathbf{y}$) into their predicted values according to the linear regression ($\hat{\mathbf{y}}$); the residual matrix returns the residuals between the true and predicted dependent variables ($\mathbf{y} - \hat{\mathbf{y}}$).
 
 Thus, what we're left with is a simple Lasso problem. The procedure can be summarized as follows: calculate the residual matrix $\mathbf{M}\_{\text{NP}}$ corresponding to the non-penalized design matrix, and apply it to both the dependent variable $\mathbf{y}$ and the penalized regressors $\mathbf{X}\_{\text{P}}$. Then, perform a Lasso on these transformed variables (potentially turning to Case 1 if the penalties vary) to obtain $\hat{\boldsymbol{\beta}}\_{\text{P}}$. Finally, perform ordinary least squares to obtain the estimate for the non-penalized parameters $\hat{\boldsymbol{\beta}}\_{\text{NP}}$.
 
