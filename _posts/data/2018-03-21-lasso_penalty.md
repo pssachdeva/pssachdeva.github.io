@@ -110,7 +110,7 @@ We have a lasso problem
 \end{align}
 To rewrite this as a lasso problem with a uniform penalty $\lambda$, proceed as follows:
 <ol>
-	<li><b>Project out the non-penalized coefficients:</b> Calculate the residual matrix for the non-penalized coefficients ($\lambda_i=0$): $$\mathbf{M}_{\text{NP}} = \mathbf{I} - \mathbf{X}\_{\text{NP}}\left(\mathbf{X}\_{\text{NP}}^T\mathbf{X}\_{\text{NP}}\right)^{-1} \mathbf{X}\_{\text{NP}}^T$$
+	<li><b>Project out the non-penalized coefficients:</b> Calculate the residual matrix for the non-penalized coefficients ($\lambda_i=0$): $$\mathbf{M}_{\text{NP}} = \mathbf{I} - \mathbf{X}_{\text{NP}}\left(\mathbf{X}_{\text{NP}}^T\mathbf{X}_{\text{NP}}\right)^{-1} \mathbf{X}_{\text{NP}}^T$$
 	and apply it to both the response variable ($\mathbf{y} \rightarrow \mathbf{M}_{\text{NP}}$) and penalized design matrix ($\mathbf{X}_{\text{P}} \rightarrow \mathbf{M}_{\text{NP}} \mathbf{X}_{\text{P}}$)
 	</li> 
 	<li>sup</li>
