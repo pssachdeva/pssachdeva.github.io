@@ -105,3 +105,7 @@ Thus, what we're left with is a simple Lasso problem. The procedure can be summa
 <h2 align="center">Summary</h2> 
 <hr class="rule-header-bottom">
 
+<ol>
+	<li>sup</li>
+	<li>sup</li>
+</ol>
