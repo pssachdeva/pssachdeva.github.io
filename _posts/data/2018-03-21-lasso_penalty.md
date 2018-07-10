@@ -104,11 +104,11 @@ Thus, what we're left with is a simple Lasso problem. The procedure can be summa
 <hr class="rule-header-top">
 <h2 align="center">Summary</h2> 
 <hr class="rule-header-bottom">
-A lasso optimization procedure with potentially distinct $\lambda$ penalties,
+Consider a lasso optimization procedure with potentially distinct regularization penalties:
 \begin{align}
-\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\Big\\}
+\hat{\boldsymbol{\beta}} &= \underset{\boldsymbol{\beta}}{\operatorname{argmin}} \Big\\{|\mathbf{y} - \mathbf{X}\boldsymbol{\beta}|^2_2 + \sum\_{i=1}^N \lambda_i |\beta_i|\Big\\}.
 \end{align}
-can be solved with a uniform penalty $\lambda$ as follows:
+We can solve this with a uniform penalty $\lambda$ as follows:
 <ol>
 	<li><b>Project out the non-penalized coefficients:</b> Calculate the residual matrix for the non-penalized coefficients ($\lambda_i=0$): $$\mathbf{M}_{\text{NP}} = \mathbf{I} - \mathbf{X}_{\text{NP}}\left(\mathbf{X}_{\text{NP}}^T\mathbf{X}_{\text{NP}}\right)^{-1} \mathbf{X}_{\text{NP}}^T$$
 	and apply it to both the response variable $\left(\mathbf{y} \rightarrow \mathbf{M}_{\text{NP}}\mathbf{y}\right)$ and penalized design matrix $\left(\mathbf{X}_{\text{P}} \rightarrow \mathbf{M}_{\text{NP}} \mathbf{X}_{\text{P}}\right)$.
