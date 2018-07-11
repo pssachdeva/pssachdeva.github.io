@@ -18,23 +18,24 @@ Suppose we have some scalar parameter $x$ and we transform it to an $N$-dimensio
 
 The $\boldsymbol{\epsilon}$ term indicates that the transformation is noisy. How easy is it to decode $x$ given $\mathbf{r}$? One way to assess an estimator $\hat{x}(\mathbf{r})$ is to calculate its variance $\text{Var}(\hat{x})$ over possible data points $\mathbf{r}$. If the variance is large, we can't necessarily trust our decoder in a given instance.
 
-The Fisher information places a lower bound on the variance <i>any</i> estimator of $x$ can possess:
+The Fisher information $I_F(x)$ places a lower bound on the variance <i>any</i> estimator of $x$ can possess:
 
 \begin{align}
-I_F(x) \leq \frac{1}{\text{Var}\left[\hat{x}(\mathbf{r})\right]}.
+\text{Var}\left[\hat{x}(\mathbf{r})\right] \geq \frac{1}{I_F(x)}.
 \end{align}
 
-Thus, if we have a small Fisher information, then any estimator for $x$ will have a large variance: decoding $x$ from $\mathbf{r}$ will always be hard. 
+Thus, if we have a small Fisher information, then even the best estimator for $x$ will have a large variance: decoding $x$ from $\mathbf{r}$ will always be hard. 
 
 Given a log-likelihood $\log P[\mathbf{r} \vert x]$, there is a mathematical expression for the Fisher information:
 
 \begin{align}
-I_F(x) &= \mathbb{E}_{\mathbf{r}\vert x}\left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\right].
+I_F(x) &= \mathbb{E}_{\mathbf{r}\vert x}\left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\right]. \\\\\\
+&=  \int d\mathbf{r} P[\mathbf{r} \vert x] \left(\frac{d}{dx} \log P[\mathbf{r} \vert x]\right)^2
 \end{align}
 
-That is, the Fisher information is the average derivative of the log-likelihood function. 
+That is, the Fisher information is the average squared derivative of the log-likelihood function. 
 
-In computational neuroscience, equation (1) is a simple encoding scheme modeling neural activity: an incoming stimulus $x$ is transformed into a (noisy) neural representation $\mathbf{r}$. Neural systems probably want to decode the stimulus at some point, so the Fisher information is a quantity of interest. In equation (1), we can analytically determine the Fisher information in the case of Gaussian $\boldsymbol{\epsilon}$. 
+In computational neuroscience, equation (1) is a simple encoding scheme modeling neural activity: an incoming stimulus $x$ is transformed into a (noisy) neural representation $\mathbf{r}$. Neural systems probably want to decode the stimulus at some point, so the Fisher information is a quantity of interest. In equation (1), we can analytically determine the Fisher information when the noise $\boldsymbol{\epsilon}$ is Gaussian. 
 
 In this post, we'll slog through that derivation and highlight the <b>linear Fisher information</b>, a component of the end expression that has been particularly important in the computational neuroscience literature. 
 
@@ -48,12 +49,6 @@ Assume $\boldsymbol{\epsilon}$ is drawn from an $N$-dimensional Gaussian distrib
 P[\mathbf{r}|x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}}\exp\left[-\frac{1}{2}(\mathbf{r}-\mathbf{f}(x))(x)^{-1} (\mathbf{r} - \mathbf{f}(x))\right].
 \end{align}
 
-Thus, the Fisher information of $x$ given the representation $\mathbf{r}$ can be written as 
-
-\begin{align}
-I_F(x) &= \mathbb{E}\left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\right] \\\\\\
-&=  \int d\mathbf{r} P[\mathbf{r} \vert x] \left(\frac{d}{dx} \log P[\mathbf{r} \vert x]\right)^2
-\end{align}
 
 First, let's compute the log-likelihood:
 
