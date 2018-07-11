@@ -90,8 +90,8 @@ which can be derived by differentiating the definition of the matrix inverse $\b
 \begin{align}
 \frac{d}{dx} \log P[\mathbf{r}|x] &= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] + \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r} - \mathbf{f}(x)) \\\\\\
 & \qquad + \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x) \boldsymbol{\Sigma}(x)^{-1}(\mathbf{r} - \mathbf{f}(x))^T \\\\\\
-&= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'] + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \notag \\\\\\
-& \qquad + \frac{1}{2} (\mathbf{r} - \mathbf{f}^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T.
+&= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \notag \\\\\\
+& \qquad + \frac{1}{2} (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T).
 \end{align}
 
 In the last line, we removed the dependence on $x$ to save space. 
@@ -99,5 +99,5 @@ In the last line, we removed the dependence on $x$ to save space.
 We'll need to square this expression to calculate the Fisher information. This is annoying, but let's be organized:
 
 \begin{align}
-\left(\frac{d}{dx} \log P[\mathbf{r}|x]\right)^2 &= \frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}']^2 + \left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2
+\left(\frac{d}{dx} \log P[\mathbf{r}|x]\right)^2 &= \frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2 + \left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2
 \end{align}
