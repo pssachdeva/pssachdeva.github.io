@@ -111,7 +111,7 @@ The Fisher information is the expectation of this expression over $P[\mathbf{r}\
 
 First, note the that addends with an odd number of $(\mathbf{r}-\mathbf{f})$ terms will vanish since we are taking an expectation over a Gaussian. For example, the expectation of the fourth term is 
 \begin{align}
-\mathbb{E}_{\mathbf{r}\vert x}\left[-\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})] &= -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})\right] \\\\\\
+\mathbb{E}_{\mathbf{r}\vert x}\left[-\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right] &= -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})\right] \\\\\\
 &= 0
 \end{align}
 
