@@ -107,11 +107,15 @@ We'll need to square this expression to calculate the Fisher information. This i
 & + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})^T.
 \end{align}
 
-The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. Thus, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are not directly impacted by the expectation. We've split up our expression into six addends, so the Fisher information is just the sum of the expectations of each of the individual terms. 
+The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, so the Fisher information is just the sum of the expectations of each of the individual terms. Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are not directly impacted by the expectation. That makes the expectation of the first term easy:
 
-First, note the that addends with an odd number of $(\mathbf{r}-\mathbf{f})$ terms will vanish since we are taking an expectation over a Gaussian. For example, the expectation of the fourth term is 
 \begin{align}
-\mathbb{E}_{\mathbf{r}\vert x}\left[-\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right] &= -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})\right] \\\\\\
+\mathbb{E}_{\mathbf{r}\vert x}\left[\frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2\right] &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
+\end{align}
+
+Next, note the that addends with an odd number of $(\mathbf{r}-\mathbf{f})$ terms will vanish, since we are taking an expectation over a Gaussian. For example, the expectation of the fourth term is 
+\begin{align}
+\mathbb{E}_{\mathbf{r}\vert x}\left[-\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right] &= -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})\right] \\\\\\
 &= 0
 \end{align}
 
