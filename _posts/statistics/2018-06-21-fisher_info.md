@@ -100,8 +100,5 @@ We'll need to square this expression to calculate the Fisher information. This i
 
 \begin{align}
 \left(\frac{d}{dx} \log P[\mathbf{r}|x]\right)^2 &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2 + \left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2 \notag \\\\\\
-& + \frac{1}{4} \left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T)\right]^2 \notag \\\\\\
-& -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\notag \\\\\\
-& -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma} (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T) \notag \\\\\\
-& + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T)
+& + \frac{1}{4} \left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T)\right]^2 \notag 
 \end{align}
