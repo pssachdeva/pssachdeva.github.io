@@ -46,20 +46,20 @@ In this post, we'll slog through that derivation and highlight the <b>linear Fis
 Assume $\boldsymbol{\epsilon}$ is drawn from an $N$-dimensional Gaussian distribution with zero mean and covariance $\boldsymbol{\Sigma}(x)$ (i.e., the covariance is potentially dependent on $x$). Then, the conditional distribution $P[\mathbf{r}\vert x]$ is a simple Gaussian distribution:
 
 \begin{align}
-P[\mathbf{r}|x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}}\exp\left[-\frac{1}{2}(\mathbf{r}-\mathbf{f}(x))(x)^{-1} (\mathbf{r} - \mathbf{f}(x))\right].
+P[\mathbf{r}\vert x] &= \frac{1}{\sqrt{(2\pi)^N \det \boldsymbol{\Sigma}(x)}}\exp\left[-\frac{1}{2}(\mathbf{r}-\mathbf{f}(x))(x)^{-1} (\mathbf{r} - \mathbf{f}(x))\right].
 \end{align}
 
 First, let's compute the log-likelihood:
 
 \begin{align}
-\log P[\mathbf{r}|x] &= -\frac{N}{2}\log(2\pi) -\frac{1}{2} \log \det \boldsymbol{\Sigma} \notag \\\\\\
+\log P[\mathbf{r}\vert x] &= -\frac{N}{2}\log(2\pi) -\frac{1}{2} \log \det \boldsymbol{\Sigma} \notag \\\\\\
 &-\frac{1}{2} \left(\mathbf{r} - \mathbf{f}(x)\right)^T \boldsymbol{\Sigma}(x)^{-1} \left(\mathbf{r} - \mathbf{f}(x)\right).
 \end{align}
 
 We then need the derivative with respect to $x$:
 
 \begin{align}
-\frac{d}{dx} \log P[\mathbf{r}|x] &= 0 - \frac{1}{2}\frac{1}{\det \boldsymbol{\Sigma}(x)} \frac{d}{dx} \det\boldsymbol{\Sigma}(x) \\\\\\
+\frac{d}{dx} \log P[\mathbf{r}\vert x] &= 0 - \frac{1}{2}\frac{1}{\det \boldsymbol{\Sigma}(x)} \frac{d}{dx} \det\boldsymbol{\Sigma}(x) \\\\\\
 &- \frac{1}{2} \frac{d(\mathbf{r} - \mathbf{f}(x))^T}{dx} \boldsymbol{\Sigma}(x)^{-1}(\mathbf{r}-\mathbf{f}(x)) \\\\\\
 &-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \frac{d\boldsymbol{\Sigma}(x)^{-1}}{dx} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
 &-\frac{1}{2}  (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}(x)^{-1} \frac{d(\mathbf{r}-\mathbf{f}(x))}{dx}
@@ -74,7 +74,7 @@ First, we can evaluate the derivative of a determinant using <a href="https://en
 where $\mathbf{A}'(x) = \frac{d}{dx}\mathbf{A}(x)$. Thus,
 
 \begin{align}
-\frac{d}{dx} \log P[\mathbf{r}|x] &= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] +\frac{1}{2} \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
+\frac{d}{dx} \log P[\mathbf{r} \vert x] &= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] +\frac{1}{2} \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
 & \qquad \qquad - \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}'(x)^{-1} (\mathbf{r}-\mathbf{f}(x)) \\\\\\
 & \qquad \qquad +\frac{1}{2}(\mathbf{r} - \mathbf{f}(x))^T \boldsymbol{\Sigma}(x)^{-1} \mathbf{f}'(x).
 \end{align}
@@ -88,7 +88,7 @@ In the above expression, the second and fourth terms are equal since they're bot
 which can be derived by differentiating the definition of the matrix inverse $\boldsymbol{\Sigma}(x) \boldsymbol{\Sigma}(x)^{-1} = \mathbf{I}$. Thus, we have
 
 \begin{align}
-\frac{d}{dx} \log P[\mathbf{r}|x] &= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] + \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r} - \mathbf{f}(x)) \\\\\\
+\frac{d}{dx} \log P[\mathbf{r}\vert x] &= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] + \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r} - \mathbf{f}(x)) \\\\\\
 & \qquad + \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x) \boldsymbol{\Sigma}(x)^{-1}(\mathbf{r} - \mathbf{f}(x))^T \\\\\\
 &= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \notag \\\\\\
 & \qquad + \frac{1}{2} (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})^T.
@@ -99,7 +99,7 @@ In the last line, we removed the dependence on $x$ to save space.
 We'll need to square this expression to calculate the Fisher information. This is annoying, but let's be organized:
 
 \begin{align}
-\left(\frac{d}{dx} \log P[\mathbf{r}|x]\right)^2 &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2 \notag \\\\\\
+\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2 &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2 \notag \\\\\\
 &+ \left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2 \notag \\\\\\
 & + \frac{1}{4} \left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T)\right]^2 \notag \\\\\\
 & -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\notag \\\\\\
@@ -107,11 +107,11 @@ We'll need to square this expression to calculate the Fisher information. This i
 & + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})^T.
 \end{align}
 
-The Fisher information is the expectation of this expression over $P[\mathbf{r}|x]$. Thus, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are not directly impacted by the expectation. We've split up our expression into six addends, so the Fisher information is just the sum of the expectations of each of the individual terms. 
+The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. Thus, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are not directly impacted by the expectation. We've split up our expression into six addends, so the Fisher information is just the sum of the expectations of each of the individual terms. 
 
 First, note the that addends with an odd number of $(\mathbf{r}-\mathbf{f})$ terms will vanish since we are taking an expectation over a Gaussian. For example, the expectation of the fourth term is 
 \begin{align}
-\mathbb{E}\_{\mathbf{r}\vert x}\left[-\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})] &= -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})\right] \\\\\\
+\mathbb{E}_{\mathbf{r}\vert x}\left[-\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})] &= -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})\right] \\\\\\
 &= 0
 \end{align}
 
