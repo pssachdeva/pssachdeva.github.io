@@ -91,7 +91,7 @@ which can be derived by differentiating the definition of the matrix inverse $\b
 \frac{d}{dx} \log P[\mathbf{r}\vert x] &= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x)\right] + \mathbf{f}'(x)^T \boldsymbol{\Sigma}(x)^{-1} (\mathbf{r} - \mathbf{f}(x)) \\\\\\
 & \qquad + \frac{1}{2} (\mathbf{r} - \mathbf{f}(x))^T\boldsymbol{\Sigma}(x)^{-1} \boldsymbol{\Sigma}'(x) \boldsymbol{\Sigma}(x)^{-1}(\mathbf{r} - \mathbf{f}(x))^T \\\\\\
 &= -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \notag \\\\\\
-& \qquad + \frac{1}{2} (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})^T.
+& \qquad + \frac{1}{2} (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}).
 \end{align}
 
 In the last line, we removed the dependence on $x$ to save space. 
@@ -103,11 +103,11 @@ We'll need to square this expression to calculate the Fisher information. This i
 &+ \left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2 \notag \\\\\\
 & + \frac{1}{4} \left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T)\right]^2 \notag \\\\\\
 & -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\notag \\\\\\
-& -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right] \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})^T \notag \\\\\\
-& + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})^T.
+& -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right] \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}) \notag \\\\\\
+& + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}).
 \end{align}
 
-The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, so the Fisher information is just the sum of the expectations of each of the individual terms. Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are not directly impacted by the expectation. That makes the expectation of the first term easy:
+The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, so the Fisher information is just the sum of the expectations of each individual term. Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are constants. That makes the expectation of the first term easy:
 
 \begin{align}
 \mathbb{E}_{\mathbf{r}\vert x}\left[\frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2\right] &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
@@ -119,4 +119,11 @@ Next, note the that addends with an odd number of $(\mathbf{r}-\mathbf{f})$ term
 &= 0
 \end{align}
 
+since $\mathbb{E}\left[\mathbf{r}\right] = \mathbf{f}$ by definition.
+
+The expectation of the second term is 
+
+\begin{align}
+\mathbb{E}_{\mathbf{r}\vert x}\left[\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2\right] &= \mathbb{E}\left[\mathbf{f}'^2 \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \mathbf{f}'\right]
+\end{align}
 
