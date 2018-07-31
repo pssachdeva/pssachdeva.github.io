@@ -124,6 +124,9 @@ since $\mathbb{E}\left[\mathbf{r}\right] = \mathbf{f}$ by definition.
 The expectation of the second term is 
 
 \begin{align}
-\mathbb{E}_{\mathbf{r}\vert x}\left[\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2\right] &= \mathbb{E}\left[\mathbf{f}'^2 \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \mathbf{f}'\right]
+\mathbb{E}_{\mathbf{r}\vert x}\left[\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2\right] &= \mathbb{E}\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \mathbf{f}'\right] \\\\\\
+&= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T\right] \boldsymbol{\Sigma}^{-1} \mathbf{f}'\right] \\\\\\
+&= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma} \boldsymbol{\Sigma}^{-1} \mathbf{f}' \\\\\\
+&= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbf{f}'.
 \end{align}
 
