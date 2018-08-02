@@ -134,16 +134,16 @@ which, incidentally, is the linear Fisher information.
 
 The expectation of the fifth term is 
 \begin{align}
--frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \mathbb{E}\left[(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f}) \right].
+-\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \mathbb{E}\left[(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f}) \right].
 \end{align}
 
-The expectation of a quadratic form is given by
+Here, we evaluating over a quadratic form for which we'll need to invoke the identity
 \begin{align}
-\mathbb{E}\left[\boldsymbol{\epsilon}^T \boldsymbol{\Lambda} \boldsymbol{\epsilon} \right] &= \text{Tr}\left[\boldsymbol{\Lambda} \text{Cov}\boldsymbol{\epsilon}\right] + \mathbb{E}[\boldsymbol{\epsilon}]^T \boldsymbol{\Lambda} \mathbb{E}[\boldsymbol{\epsilon}].
+\mathbb{E}\left[\boldsymbol{\epsilon}^T \boldsymbol{\Lambda} \boldsymbol{\epsilon} \right] &= \text{Tr}\left[\boldsymbol{\Lambda} \text{Cov}(\boldsymbol{\epsilon})\right] + \mathbb{E}[\boldsymbol{\epsilon}]^T \boldsymbol{\Lambda} \mathbb{E}[\boldsymbol{\epsilon}].
 \end{align}
 In our case, the expectation of $(\mathbf{r}-\mathbf{f})$ vanishes, so we're only concerned with the first term. The expectation becomes 
 \begin{align}
-\mathbb{E}\left[\textcircled{\small{5}}\right] &= -frac{1}{2} \text{Tr} '\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}\right] \\
-&= -frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right] \\
-&= -frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
+\mathbb{E}\left[\enclose{circle}[mathcolor="red"]{\color{black}{5}}\right] &= -\frac{1}{2} \text{Tr} '\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}\right] \\\\\\
+&= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right] \\\\\\
+&= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
 \end{align}
