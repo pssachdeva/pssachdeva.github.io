@@ -101,9 +101,9 @@ We'll need to square this expression to calculate the Fisher information. This i
 \begin{align}
 \left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2 &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2 \notag \\\\\\
 &+ \left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2 \notag \\\\\\
-& + \frac{1}{4} \left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}^T)\right]^2 \notag \\\\\\
+& + \frac{1}{4} \left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})\right]^2 \notag \\\\\\
 & -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\notag \\\\\\
-& -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right] \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}) \notag \\\\\\
+& -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}) \notag \\\\\\
 & + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}).
 \end{align}
 
@@ -127,6 +127,23 @@ The expectation of the second term is
 \mathbb{E}_{\mathbf{r}\vert x}\left[\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2\right] &= \mathbb{E}\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \mathbf{f}'\right] \\\\\\
 &= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T\right] \boldsymbol{\Sigma}^{-1} \mathbf{f}' \\\\\\
 &= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma} \boldsymbol{\Sigma}^{-1} \mathbf{f}' \\\\\\
-&= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbf{f}'.
+&= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbf{f}',
 \end{align}
 
+which, incidentally, is the linear Fisher information. 
+
+The expectation of the fifth term is 
+\begin{align}
+-frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \mathbb{E}\left[(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f}) \right].
+\end{align}
+
+The expectation of a quadratic form is given by
+\begin{align}
+\mathbb{E}\left[\boldsymbol{\epsilon}^T \boldsymbol{\Lambda} \boldsymbol{\epsilon} \right] &= \text{Tr}\left[\boldsymbol{\Lambda} \text{Cov}\boldsymbol{\epsilon}\right] + \mathbb{E}[\boldsymbol{\epsilon}]^T \boldsymbol{\Lambda} \mathbb{E}[\boldsymbol{\epsilon}].
+\end{align}
+In our case, the expectation of $(\mathbf{r}-\mathbf{f})$ vanishes, so we're only concerned with the first term. The expectation becomes 
+\begin{align}
+\mathbb{E}\left[\textcircled{\small{5}}\right] &= -frac{1}{2} \text{Tr} '\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}\right] \\
+&= -frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right] \\
+&= -frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
+\end{align}
