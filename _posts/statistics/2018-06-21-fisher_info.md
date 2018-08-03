@@ -111,7 +111,7 @@ We'll need to square this expression to calculate the Fisher information. This i
 &= E_1 + E_2 + E_3 + E_4 + E_5 + E_6. \label{eqn:addends}
 \end{align}
 
-The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, which we've listed in equation \eqref{eqn:addends}.  Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are constants. That makes the expectation of the first term easy:
+The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, which we've listed in equation \eqref{eqn:addends}.  Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$ have no $\mathbf{r}$ dependence and therefore are constants. That makes the expectation of the first term easy:
 
 \begin{align}
 E_1 = \mathbb{E}_{\mathbf{r}\vert x}\left[\frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2\right] &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
@@ -124,12 +124,13 @@ E_4 &= \mathbb{E}_{\mathbf{r}\vert x}\left[-\text{Tr}\left[\boldsymbol{\Sigma}^{
 &= 0
 \end{align}
 
-since $\mathbb{E}\left[\mathbf{r}\right] = \mathbf{f}$ by definition. Similarly, the expectation of the sixth term also vanishes, since it contains three instances of $(\mathbf{r}-\mathbf{f})$. 
+since $\mathbb{E}\left[\mathbf{r}\right] = \mathbf{f}$ by definition. Similarly, the expectation of the sixth term $E_6$ also vanishes, since it contains three instances of $(\mathbf{r}-\mathbf{f})$. 
 
 The expectation of the second term is 
 
 \begin{align}
-\mathbb{E}_{\mathbf{r}\vert x}\left[\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2\right] &= \mathbb{E}\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \mathbf{f}'\right] \\\\\\
+E_2 &= \mathbb{E}_{\mathbf{r}\vert x}\left[\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\right]^2\right] \\\\\\
+&= \mathbb{E}\left[\mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \mathbf{f}'\right] \\\\\\
 &= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbb{E}\left[(\mathbf{r}-\mathbf{f})(\mathbf{r}-\mathbf{f})^T\right] \boldsymbol{\Sigma}^{-1} \mathbf{f}' \\\\\\
 &= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma} \boldsymbol{\Sigma}^{-1} \mathbf{f}' \\\\\\
 &= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbf{f}',
@@ -137,20 +138,20 @@ The expectation of the second term is
 
 which, incidentally, is the linear Fisher information. 
 
-The expectation of the fifth term is 
+Next, the expectation of the fifth term is 
 \begin{align}
--\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \mathbb{E}\left[(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f}) \right].
+E_5 &= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \mathbb{E}\left[(\mathbf{r}-\mathbf{f})^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} (\mathbf{r}-\mathbf{f}) \right].
 \end{align}
 
 Here, we evaluating over a quadratic form for which we'll need to invoke the identity
 \begin{align}
-\mathbb{E}\left[\boldsymbol{\epsilon}^T \boldsymbol{\Lambda} \boldsymbol{\epsilon} \right] &= \text{Tr}\left[\boldsymbol{\Lambda} \text{Cov}(\boldsymbol{\epsilon})\right] + \mathbb{E}[\boldsymbol{\epsilon}]^T \boldsymbol{\Lambda} \mathbb{E}[\boldsymbol{\epsilon}].
+\mathbb{E}\left[\boldsymbol{\epsilon}^T \boldsymbol{\Lambda} \boldsymbol{\epsilon} \right] &= \text{Tr}\left[\boldsymbol{\Lambda} \text{Cov}(\boldsymbol{\epsilon})\right] + \mathbb{E}[\boldsymbol{\epsilon}]^T \boldsymbol{\Lambda} \mathbb{E}[\boldsymbol{\epsilon}]
 \end{align}
-In our case, the expectation of $(\mathbf{r}-\mathbf{f})$ vanishes, so we're only concerned with the first term. The expectation becomes 
+where $\boldsymbol{\Lambda}$ is a matrix and $\boldsymbol{\epsilon}$ is a random vector. In our case, the expectation of $(\mathbf{r}-\mathbf{f})$ vanishes, so we're only concerned with the first term. The expectation becomes 
 \begin{align}
-\mathbb{E}\left[\cdots\right] &= -\frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}\right] \\\\\\
+E_5 &= -\frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}\right] \\\\\\
 &= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right] \\\\\\
 &= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2.
 \end{align}
 
-Lastly, we need the expectation of the third term, which is the trickiest. It involves taking an expectation of 
+We've left the trickiest for last: the expectation of the 
