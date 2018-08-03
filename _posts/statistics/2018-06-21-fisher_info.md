@@ -163,5 +163,11 @@ E_3 &= \frac{1}{4} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma
 for which we'll need the identity (see <a href="https://www.jstor.org/stable/25051849">here</a>).
 
 \begin{align}
-\mathbb{E}\left[\boldsymbol{\epsilon}^T \mathbf{A} \boldsymbol{\epsilon}\boldsymbol{\epsilon}^T \mathbf{B} \boldsymbol{\epsilon}\right] &= \text{Tr}\left[\mathbf{A}\text{Cov}(\boldsymbol{\epsilon})\right]\text{Tr}\left[\mathbf{B}\text{Cov}(\boldsymbol{\epsilon})\right] + 2 \text{Tr}\left[\mathbf{A}\text{Cov}(\boldsymbol{\epsilon}) \mathbf{B}\text{Cov}\boldsymbol{\epsilon}\right]
+\mathbb{E}\left[\boldsymbol{\epsilon}^T \mathbf{A} \boldsymbol{\epsilon}\boldsymbol{\epsilon}^T \mathbf{B} \boldsymbol{\epsilon}\right] &= \text{Tr}\left[\mathbf{A}\mathbf{C}\right]\text{Tr}\left[\mathbf{B}\mathbf{C}\right] + 2 \text{Tr}\left[\mathbf{A}\mathbf{C} \mathbf{B}\mathbf{C}\right]
+\end{align}
+where $\mathbf{C} = \text{Cov}(\boldsymbol{\epsilon})$. Applying the identity gives us our last addend: 
+
+\begin{align}
+E_3 &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right]^2 + \frac{1}{2}\text{Tr}\left[\left(\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right)^2\right] \\\\\\
+&= \frac{1}{4}\text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right]^2
 \end{align}
