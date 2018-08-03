@@ -159,3 +159,9 @@ We've left the trickiest for last. The expectation of the third term is effectiv
 \begin{align}
 E_3 &= \frac{1}{4} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})\right]
 \end{align}
+
+for which we'll need the identity (see <a href="https://www.jstor.org/stable/25051849">here</a>).
+
+\begin{align}
+\mathbb{E}\left[\boldsymbol{\epsilon}^T \mathbf{A} \boldsymbol{\epsilon}\boldsymbol{\epsilon}^T \mathbf{B} \boldsymbol{\epsilon}\right] &= \text{Tr}\left[\mathbf{A}\text{Cov}(\boldsymbol{\epsilon})\right]\text{Tr}\left[\mathbf{B}\text{Cov}(\boldsymbol{\epsilon})\right] + 2 \text{Tr}\left[\mathbf{A}\text{Cov}(\boldsymbol{\epsilon}) \mathbf{B}\text{Cov}\boldsymbol{\epsilon}\right]
+\end{align}
