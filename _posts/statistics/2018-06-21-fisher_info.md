@@ -171,3 +171,12 @@ where $\mathbf{C} = \text{Cov}(\boldsymbol{\epsilon})$. Applying the identity gi
 E_3 &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right]^2 + \frac{1}{2}\text{Tr}\left[\left(\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right)^2\right] \\\\\\
 &= \frac{1}{4}\text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right]^2 + \frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right].
 \end{align}
+
+Proceeding to the final sum, we have:
+
+\begin{align}
+I_F(s) &= \mathbb{E}_{\mathbf{r}\vert x} \left[\left(\frac{d}{dx} \log P[\mathbf{r}\vert x]\right)^2\right] \\\\\\
+&= \frac{1}{4} \text{Tr} \left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right]^2  + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbf{b}' \\\\\\
+&+ \frac{1}{4}\text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right]^2 + \frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] + 0 \\\\\\
+&-\frac{1}{2}\text{Tr} \left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right]^2 + 0
+\end{align}
