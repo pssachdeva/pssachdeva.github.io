@@ -107,11 +107,11 @@ We'll need to square this expression to calculate the Fisher information. This i
 & + \frac{1}{4} \left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})\right]^2 \notag \\\\\\
 & -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\notag \\\\\\
 & -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}) \notag \\\\\\
-& + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}) \\
+& + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}) \\\\\\
 &= E_1 + E_2 + E_3 + E_4 + E_5 + E_6. \label{eqn:addends}
 \end{align}
 
-The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, which we've listed in equation \ref{eqn:addends}.  Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are constants. That makes the expectation of the first term easy:
+The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, which we've listed in equation \eqref{eqn:addends}.  Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are constants. That makes the expectation of the first term easy:
 
 \begin{align}
 \mathbb{E}_{\mathbf{r}\vert x}\left[\frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2\right] &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
