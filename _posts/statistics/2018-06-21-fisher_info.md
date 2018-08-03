@@ -154,4 +154,8 @@ E_5 &= -\frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\
 &= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2.
 \end{align}
 
-We've left the trickiest for last: the expectation of the 
+We've left the trickiest for last. The expectation of the third term is effectively the expectation over the product of two quadratic forms: 
+
+\begin{align}
+E_3 &= \frac{1}{4} \mathbb{E}\left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})\right]
+\end{align}
