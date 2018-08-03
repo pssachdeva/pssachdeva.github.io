@@ -169,5 +169,5 @@ where $\mathbf{C} = \text{Cov}(\boldsymbol{\epsilon})$. Applying the identity gi
 
 \begin{align}
 E_3 &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right]^2 + \frac{1}{2}\text{Tr}\left[\left(\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}\right)^2\right] \\\\\\
-&= \frac{1}{4}\text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right]^2
+&= \frac{1}{4}\text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right]^2 + \frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right].
 \end{align}
