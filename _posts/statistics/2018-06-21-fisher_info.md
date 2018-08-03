@@ -1,7 +1,10 @@
 ---
 layout: post
 title: A Derivation of the Linear Fisher Information
-excerpt: A slog through the derivation of the Fisher information under the assumption of Gaussian noise.
+excerpt: >-
+  A slog through the derivation of the Fisher information under the assumption
+  of Gaussian noise.
+published: true
 ---
 <hr class="rule-header-title-top">
 <h1 align="center">{{page.title}}</h1>
@@ -104,10 +107,11 @@ We'll need to square this expression to calculate the Fisher information. This i
 & + \frac{1}{4} \left[(\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f})\right]^2 \notag \\\\\\
 & -\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f})\notag \\\\\\
 & -\frac{1}{2}\text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}) \notag \\\\\\
-& + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}).
+& + \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} (\mathbf{r} - \mathbf{f}) \cdot (\mathbf{r} - \mathbf{f})^T\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}(\mathbf{r} - \mathbf{f}) \\
+&= E_1 + E_2 + E_3 + E_4 + E_5 + E_6. \label{eqn:addends}
 \end{align}
 
-The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, so the Fisher information is just the sum of the expectations of each individual term. Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are constants. That makes the expectation of the first term easy:
+The Fisher information is the expectation of this expression over $P[\mathbf{r}\vert x]$. We've split up our expression into six addends, which we've listed in equation \ref{eqn:addends}.  Furthermore, terms like $\boldsymbol{\Sigma}(x)$ and $\mathbf{f}(x)$, have no $\mathbf{r}$ dependence and therefore are constants. That makes the expectation of the first term easy:
 
 \begin{align}
 \mathbb{E}_{\mathbf{r}\vert x}\left[\frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2\right] &= \frac{1}{4} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
@@ -119,7 +123,7 @@ Next, note the that addends with an odd number of $(\mathbf{r}-\mathbf{f})$ term
 &= 0
 \end{align}
 
-since $\mathbb{E}\left[\mathbf{r}\right] = \mathbf{f}$ by definition.
+since $\mathbb{E}\left[\mathbf{r}\right] = \mathbf{f}$ by definition. Similarly, the expectation of the sixth term also vanishes, since it contains three instances of $(\mathbf{r}-\mathbf{f})$. 
 
 The expectation of the second term is 
 
@@ -145,5 +149,7 @@ In our case, the expectation of $(\mathbf{r}-\mathbf{f})$ vanishes, so we're onl
 \begin{align}
 \mathbb{E}\left[\cdots\right] &= -\frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}\right] \\\\\\
 &= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right] \cdot \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right] \\\\\\
-&= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2
+&= -\frac{1}{2} \text{Tr} \left[\boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right]^2.
 \end{align}
+
+Lastly, we need the expectation of the third term, which is the trickiest. It involves taking an expectation of 
