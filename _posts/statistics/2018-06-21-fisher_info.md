@@ -181,3 +181,9 @@ I_F(s) &= \mathbb{E}_{\mathbf{r}\vert x} \left[\left(\frac{d}{dx} \log P[\mathbf
 &-\left(\frac{1}{2}\text{Tr} \left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}'\right]^2\right) + 0 \\\\\\
 &= \mathbf{f}'^T \boldsymbol{\Sigma}^{-1} \mathbf{f}' + \frac{1}{2} \text{Tr}\left[\boldsymbol{\Sigma}^{-1} \boldsymbol{\Sigma}' \boldsymbol{\Sigma}^{-1}\boldsymbol{\Sigma}'\right].
 \end{align}
+
+And we're done!
+
+<hr class="rule-header-top">
+<h2 align="center">The Linear Fisher Information</h2>
+<hr class="rule-header-bottom">
