@@ -202,4 +202,4 @@ which is referred to as the linear Fisher information. The nice thing about this
 
 Here, $s_0$ is some base stimulus value. Therefore, the above decoder allows us to discriminate stimuli near $s_0$ with variance equal to the linear Fisher information. Thus, linear Fisher information is nice for three reasons: first, that we even have a decoder in the first place (the Fisher information has no guarantees about the existence of a decoder); second, it's linear (linearity is always nice); and third, it's generally easy to calculate (if you stare at it long enough, the linear Fisher information basically becomes a signal-to-noise ratio). 
 
-Thus, the linear Fisher information has been an important tool in the computational neuroscience literature.
+Overall, it's a useful tool for measuring the coding fidelity of different representations and as such has been vitally important in the computational neuroscience literature.
