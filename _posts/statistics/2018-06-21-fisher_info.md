@@ -197,7 +197,7 @@ I_F(s) &= \mathbf{f}'(s)^T \boldsymbol{\Sigma}^{-1}\mathbf{f}'(s)
 which is referred to as the linear Fisher information. The nice thing about this estimator (which acts as a lower bound to the Fisher information) is that it comes with its own linear decoder, known as the locally optimal linear estimator:
 
 \begin{align}
-\hat{s} &= s_0 + \mathbf{f'(s_0)^T \boldsymbol{\Sigma}^{-1}(s_0) \left[\mathbf{r} - \mathbf{f}(s_0)\right]}{\mathbf{f}'(s_0)^T \boldsymbol{\Sigma}^{-1}(s_0) \mathbf{f}'(s_0)}.
+\hat{s} &= s_0 + \mathbf{f}'(s_0)^T \boldsymbol{\Sigma}^{-1}(s_0) \left[\mathbf{r} - \mathbf{f}(s_0)\right]}{\mathbf{f}'(s_0)^T \boldsymbol{\Sigma}^{-1}(s_0) \mathbf{f}'(s_0)}.
 \end{align}
 
 Here, $s_0$ is some base stimulus value. Therefore, the above decoder allows us to discriminate stimuli near $s_0$ with variance equal to the linear Fisher information. Thus, linear Fisher information is nice for three reasons: first, that we even have a decoder in the first place (the Fisher information has no guarantees about the existence of a decoder); second, it's linear (linearity is always nice); and third, it's generally easy to calculate (if you stare at it long enough, the linear Fisher information basically becomes a signal-to-noise ratio). 
