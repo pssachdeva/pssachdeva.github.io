@@ -20,7 +20,7 @@
 .researchpic {
     justify-content: center;
     text-align: center; 
-    flex: 30%;
+    flex: 35%;
 }
 
 .page-title {
@@ -40,5 +40,5 @@
 }
 
 .researchtext {
-  flex: 70%;
+  flex: 65%;
 }
