@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".readmore").click(function(){
-      $(this).next('.toggleblurb').slideToggle();
+      $('.toggleblurb').slideToggle();
     });
 
     $(".readmore").click(function(){
