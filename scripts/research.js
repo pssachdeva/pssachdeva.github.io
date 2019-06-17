@@ -1,6 +1,6 @@
 $().ready(function(){
     $(".toggleblurb").hide();
     $(".readmore").click(function(){
-      $(this).next('.toggleblurb').slideToggle();
+      $(this).parent().parent().parent().find('.toggleblurb').slideToggle();
     });
   });
