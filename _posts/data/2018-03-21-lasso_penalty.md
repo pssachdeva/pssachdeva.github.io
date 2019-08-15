@@ -3,9 +3,9 @@ layout: post
 title: Useful Variations on the Lasso Penalty
 excerpt: Transforming a lasso regression with different penalties into a vanilla lasso regression.
 ---
+<hr class="rule-header-title-bottom">
 <hr class="rule-header-title-top">
 <h1 align="center">{{page.title}}</h1>
-<hr class="rule-header-title-bottom">
 The lasso is a regression method in which an $\ell_1$ penalty is applied to the regression coefficients. It's useful because it performs feature selection: the lasso will only estimate the parameters for the regressors it likes, while the rest get set to zero. However, we might not always want to apply a lasso penalty uniformly across the coefficients. Instead, we might want to double the lasso penalty for some coefficients, or even turn it off completely for others. In this post, I'll detail how to rewrite those cases into a vanilla lasso problem. 
 
 <hr class="rule-header-top">
