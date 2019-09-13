@@ -147,3 +147,18 @@ hr {
   border-bottom: 1.0px solid #eee;
   margin: 0px;
 }
+
+img.center {
+  display: block;
+  margin: 0 auto;
+}
+
+.citation {
+  display: block;
+  background-color: #d3d3d3;
+  padding-left: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
+}

@@ -9,6 +9,10 @@ published: true
 <hr class="rule-header-title-top">
 <h1 align="center">{{page.title}}</h1>
 <hr class="rule-header-title-bottom">
+In this post, we'll slog through the derivation of the Fisher information for
+Gaussian distributed noise while highlighting the <b>linear Fisher information</b>,
+a component of the end expression that has been particularly important in the
+computational neuroscience literature. 
 
 <hr class="rule-header-top">
 <h2 align="center">Introduction</h2>
@@ -39,8 +43,6 @@ I_F(x) &= \mathbb{E}_{\mathbf{r}\vert x}\left[\left(\frac{d}{dx} \log P[\mathbf{
 That is, the Fisher information is the average square of the score function (the derivative of the log-likelihood with respect to the parameter).
 
 In computational neuroscience, equation (1) is a simple encoding scheme modeling neural activity: an incoming stimulus $x$ is transformed into a (noisy) neural representation $\mathbf{r}$. Neural systems probably want to decode the stimulus at some point, so the Fisher information is a quantity of interest. In equation (1), we can analytically determine the Fisher information when the noise $\boldsymbol{\epsilon}$ is Gaussian. 
-
-In this post, we'll slog through that derivation and highlight the <b>linear Fisher information</b>, a component of the end expression that has been particularly important in the computational neuroscience literature. 
 
 <hr class="rule-header-top">
 <h2 align="center">Deriving the Fisher Information</h2>
