@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Preventing Interactions with the Juvenile Justice System
-excerpt: Journal club
+excerpt: How well can a model predict a student's future interactions with the justice system?
+tags: [Journal Club]
 ---
 <hr class="rule-header-title-top">
 <h2 align="center"><a href="https://onyilam.github.io/juvenile.pdf">{{page.title}}</a></h2>

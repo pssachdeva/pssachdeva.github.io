@@ -155,10 +155,46 @@ img.center {
 
 .citation {
   display: block;
-  background-color: #d3d3d3;
+  background-color: #ededed;
   padding-left: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
   font-family: 'Courier New', Courier, monospace;
   color: black;
+}
+
+th {
+  text-align: left;
+}
+
+td {
+  text-align: left;
+}
+
+.double-border {
+  border-bottom: double;
+}
+
+.jc-tag {
+  border-radius: 4px;
+  border: 1.5px solid black;
+  background-color: rgba(128, 0, 128, 0.35);
+  color: rgba(128, 0, 128, 1);
+  padding: 4px;
+}
+
+.stat-tag {
+  border-radius: 4px;
+  border: 1.5px solid black;
+  background-color: rgba(255, 150, 0, 0.25);
+  color: rgba(255, 100, 0, 1);
+  padding: 4px;
+}
+
+.a-tag {
+  border-radius: 4px;
+  border: 1.5px solid black;
+  background-color: rgba(0, 0, 255, 0.25);
+  color: rgba(0, 0, 255, 1);
+  padding: 4px;
 }

@@ -3,19 +3,32 @@ layout: default
 title: Posts
 ---
 <div class="page-title">
-	<h1 align="center">Posts</h1>
+    <h1 align="center">Posts</h1>
 </div>
 <div>
-	<ul class="post-list">
-		{% for post in site.posts %}
-		<hr class="rule-header-middle">
-		<li>
-			<span>{{ post.date | date: "%b %-d, %Y" }}</span>
-			<h2>
-				<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-			</h2>
-			<i>{{ post.excerpt }}</i>
-		</li>
-		{% endfor %}
-	</ul>
+    <ul class="post-list">
+        {% for post in site.posts %}
+        <hr class="rule-header-middle">
+        <li>
+            <span>{{ post.date | date: "%b %-d, %Y" }}
+                <span style="float:right;">
+                    {% for tag in post.tags %}
+                        {% if tag == "Journal Club" %}
+                            <span class="jc-tag">{{ tag }}</span>
+                        {% elsif tag == "Analysis"} %}
+                            <span class="a-tag">{{ tag }}</span>
+                        {% elsif tag == "Statistics"} %}
+                            <span class="stat-tag">{{ tag }}</span>
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </span>
+            <h2>
+                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h2>
+            <i>{{ post.excerpt }}</i>
+            <br>
+        </li>
+        {% endfor %}
+    </ul>
 </div>

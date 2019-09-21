@@ -5,6 +5,7 @@ excerpt: >-
   A slog through the derivation of the Fisher information under the assumption
   of Gaussian noise.
 published: true
+tags: [Statistics]
 ---
 <hr class="rule-header-title-top">
 <h1 align="center">{{page.title}}</h1>
