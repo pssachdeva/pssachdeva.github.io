@@ -35,9 +35,9 @@ practices such as stop-and-frisk may violate either the Fourth Amendment
 protection clause).
 
 There's a rich literature on using probabilistic models to assess the degree to
-which police interactions with civilians exhibit racial disparities. Details on
-some of those studies will be elaborated on in future posts, but for now, I'll
-include references to a subset of them that informed this analysis
+which police interactions with civilians exhibit racial disparities. The details
+on some of those studies will be elaborated on in future posts, but for now,
+I'll include references to a subset of them that informed this analysis
 <a class="reference">[2]</a>
 <span class="citation">
     <a href="https://www.tandfonline.com/doi/abs/10.1198/016214506000001040">
@@ -69,12 +69,12 @@ The specific model I used was heavily based on <a class="reference">[6].</a>
     </a>
 </span>
 
-In my analysis, I utilized the recently consolidated dataset from the
-<a href="https://openpolicing.stanford.edu/">Stanford Open Policing Project</a>.
-This dataset acts as a standardized repository of traffic and pedestrian stops
-across 31 state police agencies. Each sample in the dataset is a traffic stop
-and includes features such as driver demographics, violation information, and
-whether searches or arrests were conducted. I complemented this data with
+In my analysis, I utilized the recently consolidated dataset from the 
+<a href="https://openpolicing.stanford.edu/">Stanford Open Policing Project</a>
+(SOPP). This dataset acts as a standardized repository of traffic and pedestrian
+stops across 31 state police agencies. Each sample in the dataset is a traffic
+stop and includes features such as driver demographics, violation information,
+and whether searches or arrests were conducted. I complemented this data with
 demographic and crime data at the county level, taken from the American
 Community Surveys and the Criminal Justice Profiles from the California State
 Attorney General’s office.
@@ -87,23 +87,49 @@ The main questions I aimed to answer were as follows:
     <li>How are these putative racial disparities moderated by demographic and
         crime rate features for each county?</li>
 </ol>
-In answering these research questions, I control for the driver’s gender (which
+In answering these research questions, I controlled for the driver’s gender (which
 is known to correlate with stop rates) as well as the reason for the stop (e.g.
-a DUI may result in a higher probability of a search). In addition, I control
+a DUI may result in a higher probability of a search). In addition, I controlled
 for county-level features that may influence the search rate, such as property
 and violent crime rates (searches may be more common in counties with higher
 crime), poverty rate, and the percent of residents that are non-white.
-Importantly, I control for stop rate and population as these exhibit large
-variances amongst the counties, and certain counties with smaller population
-exhibit abnormally large numbers of stops.
 
 <hr class="rule-header-top">
 <h2 align="center">The Data</h2>
 <hr class="rule-header-bottom">
 
+I drew the model variables from three datasets. As stated before, the samples
+consisted of stops conducted by the California highway patrol in 10 Bay Area
+counties. I operated at the county level because the SOPP does not offer stops at
+a finer spatial resolution. The outcome and features associated with these were
+obtained from the Stanford Open Policing Project (SOPP), which has consolidated
+patrol stops occurring from 2013 to 2017 in counties throughout the country. For
+cluster variables, I drew on demographic and crime data at the county level. I
+obtained the demographic information from the American Community Surveys 5-year
+Summary dataset (covering the years 2009-2016), which is administered and
+consolidated by the United States Census Bureau. I obtained the crime data from
+Open Justice, a transparency initiative publishing criminal justice data and
+led by the California Department of Justice.
+
+The stop rate, or the number of stops per 1000 people, are shown in Figure 1. Napa
+and Marin counties likely have the highest stop rates due to their population
+size. Meanwhile, Alameda County has the largest number of total stops.
+Furthermore, Alameda County has an abundance of highway corridors which likely
+increases the number of potential stops. Among stops, there is an average search
+rate of around 3% across counties. Thus, searches are not initiated very often.
+
 <div style="text-align:center">
 <img src="/pics/mlm/mlm_n_stops.png"/>
 <b>Figure 1:</b> Stop rate in each Bay Area county
+</div>
+
+Lastly, we can examine the number of stops by race and violation. These are
+shown in Figure 2. The majority of stops are of white drivers, followed by
+Hispanic driver. Lastly, black, Asian, and "other" drivers are roughly equal
+
+<div style="text-align:center">
+<img src="/pics/mlm/mlm_stops_by_race_violation.png"/>
+<b>Figure 2:</b> Fraction of stops by race (left) and violation (right).
 </div>
 <hr class="rule-header-top">
 <h2 align="center">Multilevel Model</h2>
@@ -265,26 +291,26 @@ the likelihood while maintaining the small but significant residual ICC
 ($\hat{\rho}=0.01$). Importantly, the coefficients for black and Hispanic result
 in conditional odds ratios are $2.07$ and $1.88$, respectively. This implies
 that, given a county, they are more likely to be searched than a white driver
-(conversely, Asian and ``Other'' drivers are less likely to be searched than a
+(conversely, Asian and "Other" drivers are less likely to be searched than a
 white driver) given a stop. Thus, this provides evidence that there are racial
 disparities in search rates across the Bay Area but that they do not
 strongly vary across the Bay Area.
 
-The complete model achieved the highest log-likelihood of the four models. In
+The complete model achieved the highest log-likelihood of the three models. In
 addition, it maintained the small but significant ICC ($\hat{\rho} = 0.005$).
-The inclusion of the interaction terms did not impact most of the level-1 covariates
-except for whether the driver was black or Hispanic, as might be expected. The
-conditional odds ratios for black, hispanic, Asian, and other drivers are
-$1.42$, $2.01$, $0.79$, and $0.71$ compared to white drivers, respectively.
-Thus, the racial disparities among black and Hispanic drivers persist.
-Furthermore, it is worthwhile to note that the conditional odds ratio for male
-drivers $(1.47)$ implies that there may exist gender disparities, as the model
-implies that men are more likely to be searched than women. Among the violation
-variables, a DUI is the most significant with the highest effect size
+The inclusion of the interaction terms did not impact most of the individual
+level covariates except for whether the driver was black or Hispanic, as might
+be expected. The conditional odds ratios for black, hispanic, Asian, and other
+drivers are $1.42$, $2.01$, $0.79$, and $0.71$ compared to white drivers,
+respectively. Thus, the racial disparities among black and Hispanic drivers
+persist. Furthermore, it is worthwhile to note that the conditional odds ratio
+for male drivers $(1.47)$ implies that there may exist gender disparities, as
+the model implies that men are more likely to be searched than women. Among the
+violation variables, a DUI is the most significant with the highest effect size
 (conditional odds ratio of $6.25$), implying that drivers pulled over under the
 suspicion of DUI are much more likely to be searched.
 
-In Model 4, all level-2 covariates are not significant at the $p=0.05$ level.
+In Model 3, all cluster-level covariates are not significant at the $p=0.05$ level.
 The Hispanic interaction term is also not significant, while the black
 interaction term is highly significant. Its conditional odds ratio is $1.074$,
 implying that among black drivers, each additional violent crime per 1,000
@@ -312,3 +338,18 @@ officer, and for what reason the officer initiated a search. For example, past
 studies have examined such reasons in stop-and-frisk data and found that reasons
 such as “furtive movements” are often used but not predictive of a crime, thus
 providing a mechanism for which racial biases tie into frisk rates.
+
+Furthermore, this analysis only assessed whether racial disparities existed in
+the decision to conduct a search given a stop, without regard for whether those
+decisions were correct (i.e. resulted in finding contraband). This is what
+is known as a <i>benchmark test</i>. Its main limitation is that it does not
+consider whether there are actual differences in the likelihood that members
+of different sub-groups will, for example, carry contraband. The recently
+proposed threshold test by Simoiu et al. <a class="reference">[7]</a>
+<span class="citation">
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3049597">
+        Simoiu, Corbett-Davies, Goel, <i>The Annals of Applied Statistics</i>, 2017.
+    </a>
+</span>
+circumvents this issue by estimating the underlying distribution of likelihoods
+for different sub-groups using a latent Bayesian model.
