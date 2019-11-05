@@ -328,12 +328,12 @@ moderates the racial disparities of search rates among black drivers.
 Ideally, I would have operated at a finer spatial resolution (e.g. census
 tracts) as racial disparities are more likely to be moderated at this level
 (rather than the county level, which may blur the lines between segregated
-neighborhoods). Unfortunately, our dataset only provided stops at the county
-level. A study with data at the census tract level likely would have revealed m
-correlating with socioeconomic factors, as past studies have shown. In contrast,
-our study did not observe strong variations among counties in the Bay Area,
-likely due to the small number of clusters and the large population in each
-county.
+neighborhoods). Unfortunately, the dataset only provided stops at the county
+level. A study with data at the census tract level likely would have revealed
+correlations between socioeconomic factors at the cluster level and search
+rates, as past studies have shown. In contrast, our study did not observe strong
+variations among counties in the Bay Area, likely due to the small number of
+clusters and the large population in each county.
 
 This analysis could have benefited from additional features, such as the
 driver’s age, ethnicity, the driver’s criminal history that was available to the
