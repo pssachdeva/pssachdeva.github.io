@@ -99,7 +99,7 @@ crime), poverty rate, and the percent of residents that are non-white.
 <hr class="rule-header-bottom">
 
 I drew the model variables from three datasets. As stated before, the samples
-consisted of stops conducted by the California highway patrol in 10 Bay Area
+consisted of stops conducted by the California Highway Patrol in 10 Bay Area
 counties. I operated at the county level because the SOPP does not offer stops at
 a finer spatial resolution. The outcome and features associated with these were
 obtained from the Stanford Open Policing Project (SOPP), which has consolidated
@@ -108,24 +108,27 @@ cluster variables, I drew on demographic and crime data at the county level. I
 obtained the demographic information from the American Community Surveys 5-year
 Summary dataset (covering the years 2009-2016), which is administered and
 consolidated by the United States Census Bureau. I obtained the crime data from
-Open Justice, a transparency initiative publishing criminal justice data and
+<a href="https://openjustice.doj.ca.gov/">Open Justice</a>, a transparency initiative publishing criminal justice data and
 led by the California Department of Justice.
 
-The stop rate, or the number of stops per 1000 people, are shown in Figure 1. Napa
-and Marin counties likely have the highest stop rates due to their population
-size. Meanwhile, Alameda County has the largest number of total stops.
-Furthermore, Alameda County has an abundance of highway corridors which likely
-increases the number of potential stops. Among stops, there is an average search
-rate of around 3% across counties. Thus, searches are not initiated very often.
+We can examine a few summary statistics to get a feel for the data. The stop
+rate, or the number of stops per 1000 people, are shown in Figure 1. Napa and
+Marin counties likely have the highest stop rates due to their population size.
+Meanwhile, Alameda County has the largest number of total stops. Furthermore,
+Alameda County has an abundance of highway corridors which likely increases the
+number of potential stops. Among stops, there is an average search rate of
+around 3% across counties. Thus, searches are not initiated very often.
 
 <div style="text-align:center">
 <img src="/pics/mlm/mlm_n_stops.png"/>
 <b>Figure 1:</b> Stop rate in each Bay Area county
 </div>
 
-Lastly, we can examine the number of stops by race and violation. These are
-shown in Figure 2. The majority of stops are of white drivers, followed by
-Hispanic driver. Lastly, black, Asian, and "other" drivers are roughly equal
+We can also examine the number of stops by race and violation, depicted in
+Figure 2. The majority of stops are of white drivers, followed by
+Hispanic drivers. At the same time, the majority of stops do not have a listed
+reason for the stop. Among listed reasons, "moving" violations a most common,
+while DUIs are only a small fraction of the stops.
 
 <div style="text-align:center">
 <img src="/pics/mlm/mlm_stops_by_race_violation.png"/>
