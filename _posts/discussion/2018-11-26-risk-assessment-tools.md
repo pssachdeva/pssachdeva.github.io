@@ -110,4 +110,4 @@ incarceration system. Even more importantly, legislators must be bold enough
 to turn away from risk assessment tools entirely, if incremental approaches
 to remediating their usage appear unlikely to succeed.
 
-
+The text of the SB 10 bill can be found <a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=201720180SB10">here</a>.
