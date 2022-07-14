@@ -34,11 +34,11 @@
 }
 
 .researchtext {
-  flex: 70%;
+  flex: 65%;
 }
 
 .researchpic {
-  flex: 30%;
+  flex: 35%;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */  
 }
