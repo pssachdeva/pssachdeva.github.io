@@ -1,0 +1,283 @@
+/* Custom styling overrides */
+
+/* Use Crimson Pro font with larger size */
+body {
+  font-family: "Crimson Pro", serif !important;
+  font-size: 1.25rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Ensure paragraphs also get the larger font size */
+p {
+  font-size: 1.25rem !important;
+  line-height: 1.6 !important;
+}
+
+/* List items should also be larger */
+li {
+  font-size: 1.25rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Make headings proportionally larger */
+h1 {
+  font-size: 2.2rem !important;
+  text-align: center !important;
+}
+
+h2 {
+  font-size: 1.8rem !important;
+}
+
+h3 {
+  font-size: 1.4rem !important;
+}
+
+/* Make sidebar text slightly smaller but still readable */
+header {
+  font-size: 1.1rem !important;
+}
+
+header h1 {
+  font-size: 1.8rem !important;
+}
+
+header position {
+  font-size: 1.2rem !important;
+}
+
+header email {
+  font-size: 1.1rem !important;
+}
+
+/* Publications styling */
+.publications {
+  margin-top: 2rem;
+}
+
+.pub-row {
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Publication entry boxes */
+.publication-entry {
+  background-color: #f8f9fa !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  margin-bottom: 2rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #e9ecef !important;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  .publication-entry {
+    background-color: #3c3d3e !important;
+    border-color: #c1c3c6 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+}*/
+
+/* Standardized publication buttons */
+.pub-button,
+.btn.btn-sm.z-depth-0 {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #2c5aa0 !important;
+  color: white !important;
+  padding: 0.25rem 0.6rem !important;
+  border-radius: 0.375rem !important;
+  text-decoration: none !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  margin-right: 0.5rem !important;
+  margin-bottom: 0.25rem !important;
+  line-height: 1 !important;
+  height: 1.875rem !important;
+  min-height: 1.875rem !important;
+  box-sizing: border-box !important;
+  vertical-align: top !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+  box-shadow: none !important;
+}
+
+.pub-button:hover,
+.btn.btn-sm.z-depth-0:hover {
+  background-color: #1a4480 !important;
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* Publication venue styling */
+.publication-venue {
+  margin: 0 0 0.5rem 0 !important;
+  font-style: italic !important;
+  color: #6d91c3 !important;
+  font-weight: 600 !important;
+}
+
+/* Category sections styling */
+.category-section {
+  margin-bottom: 2rem !important;
+}
+
+.category-header {
+  background-color: #2c5aa0 !important;
+  color: white !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  transition: background-color 0.3s ease !important;
+  margin-bottom: 0 !important;
+}
+
+.category-header:hover {
+  background-color: #1a4480 !important;
+}
+
+.category-header h2 {
+  color: white !important;
+  margin: 0 !important;
+  font-size: 1.5rem !important;
+}
+
+.category-count {
+  font-size: 1rem !important;
+  opacity: 0.8 !important;
+  margin-left: 0.5rem !important;
+}
+
+.category-toggle {
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+  transition: transform 0.3s ease !important;
+}
+
+.category-content {
+  padding: 0 !important;
+  margin-top: 0 !important;
+  overflow: hidden !important;
+  transition: max-height 0.3s ease-out !important;
+}
+
+.category-content.collapsed {
+  max-height: 0 !important;
+}
+
+.category-content.expanded {
+  max-height: none !important;
+}
+
+/* Adjust publication entries within categories */
+.category-section .publication-entry {
+  margin-top: 1rem !important;
+}
+
+.col-sm-3 {
+  flex: 0 0 25% !important;
+  max-width: 25% !important;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}
+
+.col-sm-9 {
+  flex: 0 0 75% !important;
+  max-width: 75% !important;
+  padding-right: 15px !important;
+  padding-left: 20px !important;
+}
+
+.badge {
+  display: inline-block !important;
+  padding: 0.25em 0.4em !important;
+  font-size: 75% !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: baseline !important;
+  border-radius: 0.25rem !important;
+  color: #fff !important;
+  background-color: #2c5aa0 !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+.teaser {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.btn {
+  display: inline-block !important;
+  padding: 0.375rem 0.75rem !important;
+  margin-bottom: 0 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.42857143 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+  border: 1px solid #2c5aa0 !important;
+  border-radius: 0.25rem !important;
+  background-color: #2c5aa0 !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  margin-right: 0.5rem !important;
+}
+
+.btn:hover {
+  background-color: #1a4480 !important;
+  border-color: #1a4480 !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.title a {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+}
+
+.title a:hover {
+  text-decoration: underline !important;
+}
+
+.author {
+  margin: 0.5rem 0 !important;
+}
+
+.periodical {
+  margin: 0.5rem 0 !important;
+  font-style: italic !important;
+}
+
+.links {
+  margin-top: 0.5rem !important;
+}
+
+.category-section{border-radius:12px;margin:1rem 0;}
+.category-header{padding:1rem;cursor:pointer;user-select:none;}
+.category-count,.category-toggle{margin-left:.5rem}
+
+/* the part that moves */
+.category-content{
+  overflow:hidden;
+  max-height:0;                 /* start collapsed */
+  transition:max-height .35s ease; /* animates height */ /* MDN on transition: https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+}
+
+/* Avatar styling - make bigger and add border */
+.image.avatar img {
+  width: 60% !important;
+  padding: 0 !important;
+  border: 2px solid #2c5aa0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
