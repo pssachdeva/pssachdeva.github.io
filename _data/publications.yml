@@ -53,6 +53,16 @@ main:
     image: "../assets/img/tarjimly.png"
     category: "ML in the Public Interest"
 
+  - title: "Interrogating Racism in the Medical Literature Using Word Embeddings"
+    authors: "L. Liao, S. Darwish, C. Figueroa, E. Manalo-Pedro, S. Pola, M. Jha, F. De Maio, C. von Vacano, C. Kennedy and <strong><i>P.S. Sachdeva</i></strong>"
+    conference: "Submitted to Computational Humanities Research 2025"
+    category: "Computational Humanities"
+
+  - title: "The stories about racism and health: the development of a framework for racism narratives in medical literature using a computational grounded theory approach"
+    authors: "C. Figueroa, E. Manalo-Pedro, S. Pola, S. Darwish,  <strong><i>P.S. Sachdeva</i></strong>, C. von Vacano, M. Jha, F. De Maio, C. Kennedy"
+    conference: "International Journal for Equity in Health (2025)"
+    category: "Computational Humanities"
+
   - title: "Identifying and Mitigating Statistical Biases in Neural Models of Tuning and Functional Coupling"
     authors: "<i><strong>P. S. Sachdeva</strong></i>, J. Bak, J. A. Livezey, M. E. Dougherty, S. Bhattacharyya, K. E. Bouchard"
     conference: "Submitted to Journal of Machine Learning Research"
