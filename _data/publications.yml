@@ -1,4 +1,11 @@
 main:
+  - title: "Deliberative Dynamics and Value Alignment in LLM Debates"
+    authors: "<i><strong>P. S. Sachdeva</strong></i>, T. van Nuenen"
+    conference: "NeurIPS Workshop on Multi-Turn Interactions in Large Language Models (2025)"
+    conference_short: "NeurIPS"
+    category: "AI Alignment"
+    pdf: https://arxiv.org/abs/2510.10002
+
   - title: "Normative evaluation of large language models with everyday moral dilemmas"
     authors: "<i><strong>P. S. Sachdeva</strong></i>, T. van Nuenen"
     conference: "ACM Conference on Fairness, Accountability, and Transparency (2025)"

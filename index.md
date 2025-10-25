@@ -12,5 +12,6 @@ I’ve also worked at the intersection of data science and public interest, appl
 
 **News**
 
-- Our work on LLM evaluation using everyday dilemmas was featured in [Berkeley News](https://news.berkeley.edu/2025/09/10/do-chatbots-have-a-moral-compass-researchers-turn-to-reddit-to-find-out/) and the [DailyCal](https://www.dailycal.org/news/campus/research-and-ideas/uc-berkeley-researchers-use-reddit-to-study-ai-s-moral-judgements/article_441d16db-da8c-4e77-9485-f247b2f536d8.html)!
+- 🎊 Our work on exploring how LLMs debate moral dilemmas was accepted to the NeurIPS Workshop on Multi-Turn Interactions in LLMs!
+- Our work on LLM evaluation using everyday dilemmas was featured in [Berkeley News](https://news.berkeley.edu/2025/09/10/do-chatbots-have-a-moral-compass-researchers-turn-to-reddit-to-find-out/) and the [DailyCal](https://www.dailycal.org/news/campus/research-and-ideas/uc-berkeley-researchers-use-reddit-to-study-ai-s-moral-judgements/article_441d16db-da8c-4e77-9485-f247b2f536d8.html).
 - 🎉 Our paper on using word embeddings to understand how racism is discussed in the medical literature was accepted to Computational Humanities Research 2025! 
